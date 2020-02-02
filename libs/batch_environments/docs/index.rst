@@ -11,3 +11,10 @@
 batch_environments
 ==================
 
+This module allows for the execution of batch jobs, a series of programs without user intervention. All data is
+preselected and will be executed according to preset parameters, such as date or completion of another task.
+Batch environments are especially useful for executing repetitive tasks.
+
+For more information about batch jobs, see https://stellar-group.github.io/hpx/docs/sphinx/latest/html/manual/running_on_batch_systems.html?highlight=batch%20environments
+For more information on batch environments, see 
+
