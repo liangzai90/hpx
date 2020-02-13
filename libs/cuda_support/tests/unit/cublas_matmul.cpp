@@ -35,8 +35,8 @@
 #include <hpx/include/parallel_for_each.hpp>
 #include <hpx/include/parallel_for_loop.hpp>
 //
-#include <hpx/cuda_support/target.hpp>
 #include <hpx/cuda_support/cuda_future_helper.hpp>
+#include <hpx/cuda_support/target.hpp>
 #include <hpx/timing.hpp>
 #ifdef HPX_CUBLAS_DEMO_WITH_ALLOCATOR
 #include <hpx/compute/cuda/allocator.hpp>
@@ -245,14 +245,11 @@ void matrixMultiply(
 
 #else
     T *d_A, *d_B, *d_C;
-    hpx::cuda::cuda_error(
-        cudaMalloc((void**) &d_A, size_A * sizeof(T)));
+    hpx::cuda::cuda_error(cudaMalloc((void**) &d_A, size_A * sizeof(T)));
 
-    hpx::cuda::cuda_error(
-        cudaMalloc((void**) &d_B, size_B * sizeof(T)));
+    hpx::cuda::cuda_error(cudaMalloc((void**) &d_B, size_B * sizeof(T)));
 
-    hpx::cuda::cuda_error(
-        cudaMalloc((void**) &d_C, size_C * sizeof(T)));
+    hpx::cuda::cuda_error(cudaMalloc((void**) &d_C, size_C * sizeof(T)));
 
     // adding async copy operations into the stream before cublas calls puts
     // the copies in the queue before the matrix operations.
