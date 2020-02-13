@@ -18,5 +18,8 @@ Batch environments are especially useful for executing repetitive tasks.
 |hpx| supports the creation of batch jobs through the Portable Batch System (PBS) and SLURM.
 
 For more information about batch jobs, see https://stellar-group.github.io/hpx/docs/sphinx/latest/html/manual/running_on_batch_systems.html?highlight=batch%20environments
-For more information on batch environments, see :ref:`API reference <libs_batch_environment_api>` 
+For more information on batch environments, see :ref:`API reference <libs_batch_environments_api>`
+
+:ref:`running_on_batch_systems` 
+
 
