@@ -2,7 +2,7 @@
     Copyright (C) 2018 Mikael Simberg
 
     SPDX-License-Identifier: BSL-1.0
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    Distributed under the |boost| Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 .. _quickstart:
@@ -41,7 +41,7 @@ It is also recommended that you check out the latest stable tag:
 The minimum dependencies needed to use |hpx| are |boost|_ and |hwloc|_. If these
 are not available through your system package manager, see
 :ref:`boost_installation` and :ref:`hwloc_installation` for instructions on how
-to build them yourself. In addition to Boost and HWLOC, it is recommended
+to build them yourself. In addition to |boost| and HWLOC, it is recommended
 that you don't use the system allocator, but instead use either ``tcmalloc``
 from |google_perftools|_ (default) or |jemalloc|_ for better performance. If you
 would like to try |hpx| without a custom allocator at this point, you can
