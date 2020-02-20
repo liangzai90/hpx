@@ -11,10 +11,11 @@
 batch_environments
 ==================
 
-This module allows for the execution of batch jobs, a series of programs
-without user intervention. All data is preselected and will be executed
-according to preset parameters, such as date or completion of another task.
-Batch environments are especially useful for executing repetitive tasks.
+This module allows for the detection of execution as batch jobs, a series of
+programs executed without user intervention. All data is preselected and will
+be executed according to preset parameters, such as date or completion of
+another task. Batch environments are especially useful for executing repetitive
+tasks.
 
 |hpx| supports the creation of batch jobs through the Portable Batch System
 (PBS) and SLURM.
