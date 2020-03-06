@@ -17,10 +17,10 @@ Performance counters
 
 Performance Counters in |hpx| are used to provide information as to how well the
 runtime system or an application is performing. The counter data can help
-determine system bottlenecks and fine-tune system and application performance.
+determine system bottlenecks, and fine-tune system and application performance.
 The |hpx| runtime system, its networking, and other layers provide counter data
-that an application can consume to provide users with information of how well
-the application is performing.
+that an application can consume to provide users with information about how
+well the application is performing.
 
 Applications can also use counter data to determine how much system resources to
 consume. For example, an application that transfers data over the network could
@@ -29,9 +29,9 @@ transfer without competing for network bandwidth with other network traffic. The
 application could use the counter data to adjust its transfer rate as the
 bandwidth usage from other network traffic increases or decreases.
 
-Performance Counters are |hpx| parallel processes which expose a predefined
+Performance Counters are |hpx| parallel processes that expose a predefined
 interface. |hpx| exposes special API functions that allow one to create, manage,
-read the counter data, and release instances of Performance Counters.
+and read the counter data, and release instances of Performance Counters.
 Performance Counter instances are accessed by name, and these names have a
 predefined structure which is described in the section
 :ref:`performance_counter_names`. The advantage of this is that any Performance
@@ -53,7 +53,7 @@ more information, please refer to the section :ref:`commandline`.
 Performance counter names
 -------------------------
 
-All Performance Counter instances have a name uniquely identifying this
+All Performance Counter instances have a name uniquely identifying each
 instance. This name can be used to access the counter, retrieve all related meta
 data, and to query the counter data (as described in the section
 :ref:`consuming`). Counter names are strings with a predefined structure. The
@@ -70,7 +70,7 @@ string formatted as:
 
    parentinstancename#parentindex/instancename#instanceindex
 
-Each separate part of a countername (e.g. ``objectname``, ``countername``
+Each separate part of a countername (e.g., ``objectname``, ``countername``
 ``parentinstancename``, ``instancename``, and ``parameters``) should start with
 a letter (``'a'``\ ...\ ``'z'``, ``'A'``\ ...\ ``'Z'``) or an underscore
 character (``'_'``), optionally followed by letters, digits (``'0'``\ ...\
@@ -80,28 +80,28 @@ inside a counter name. The characters ``'/'``, ``'{'``, ``'}'``, ``'#'`` and
 the counter name.
 
 The parts ``parentinstanceindex`` and ``instanceindex`` are integers. If an
-index is not specified |hpx| will assume a default of ``-1``.
+index is not specified, |hpx| will assume a default of ``-1``.
 
 .. _example:
 
 Two simple examples
 -------------------
 
-An instance for a well formed (and meaningful) simple counter name would be:
+An example of a well-formed (and meaningful) simple counter name would be:
 
 .. code-block:: text
 
    /threads{locality#0/total}/count/cumulative
 
 This counter returns the current cumulative number of executed (retired)
-|hpx|-threads for the :term:`locality` ``0``. The counter type of this counter
+|hpx| threads for the :term:`locality` ``0``. The counter type of this counter
 is ``/threads/count/cumulative`` and the full instance name is
 ``locality#0/total``. This counter type does not require an ``instanceindex`` or
 ``parameters`` to be specified.
 
 In this case, the ``parentindex`` (the ``'0'``) designates the :term:`locality`
 for which the counter instance is created. The counter will return the number of
-|hpx|-threads retired on that particular :term:`locality`.
+|hpx| threads retired on that particular :term:`locality`.
 
 Another example for a well formed (aggregate) counter name is:
 
@@ -132,7 +132,7 @@ is identified by the ``objectname`` and the ``countername`` parts of the name.
 
 When an application starts |hpx| will register all available counter types on each of
 the localities. These counter types are held in a special Performance Counter
-registration database which can be later used to retrieve the meta data related
+registration database, which can be used to retrieve the meta data related
 to a counter type and to create counter instances based on a given counter
 instance name.
 
@@ -143,28 +143,28 @@ Performance counter instances
 
 The ``full_instancename`` distinguishes different counter instances of the same
 counter type. The formatting of the ``full_instancename`` depends on the counter
-type. There are two types of counters: simple counters which usually generate
-the counter values based on direct measurements, and aggregate counters which
+type. There are two types of counters: simple counters, which usually generate
+the counter values based on direct measurements, and aggregate counters, which
 take another counter and transform its values before generating their own
 counter values. An example for a simple counter is given :ref:`above <example>`:
-counting retired |hpx|-threads. An aggregate counter is shown as an example
+counting retired |hpx| threads. An aggregate counter is shown as an example
 :ref:`above <example>` as well: calculating the average of the underlying
 counter values sampled at constant time intervals.
 
 While simple counters use instance names formatted as
 ``parentinstancename#parentindex/instancename#instanceindex``, most aggregate
-counters have the full counter name of the embedded counter as its instance
+counters have the full counter name of the embedded counter as their instance
 name.
 
 Not all simple counter types require specifying all 4 elements of a full counter
-instance name, some of the parts (``parentinstancename``, ``parentindex``,
+instance name; some of the parts (``parentinstancename``, ``parentindex``,
 ``instancename``, and ``instanceindex``) are optional for specific counters.
 Please refer to the documentation of a particular counter for more information
 about the formatting requirements for the name of this counter (see
 :ref:`counters`).
 
 The ``parameters`` are used to pass additional information to a counter at
-creation time. They are optional and they fully depend on the concrete counter.
+creation time. They are optional, and they fully depend on the concrete counter.
 Even if a specific counter type allows additional parameters to be given, those
 usually are not required as sensible defaults will be chosen. Please refer to
 the documentation of a particular counter for more information about what
@@ -177,7 +177,7 @@ determined dynamically at application start based on the execution environment
 of the application. For instance, this set is influenced by the current hardware
 environment for the :term:`locality` (such as whether the :term:`locality` has
 access to accelerators), and the software environment of the application (such
-as the number of OS-threads used to execute |hpx|-threads).
+as the number of OS threads used to execute |hpx| threads).
 
 .. _wildcards:
 
