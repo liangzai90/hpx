@@ -535,12 +535,12 @@ client component object for this purpose::
 
 Instantiating an instance of this type will create the performance counter
 identified by the given ``name``. Only the first invocation for any given counter
-name will create a new instance of that counter, all following invocations for a
-given counter name will reference the initially created instance. This ensures,
-that at any point in time there is always not more than one active instance of
+name will create a new instance of that counter. All following invocations for a
+given counter name will reference the initially created instance. This ensures
+that at any point in time there is never more than one active instance of
 any of the existing performance counters.
 
-In order to access the counter value (or invoking any of the other functionality
+In order to access the counter value (or to invoke any of the other functionality
 related to a performance counter, like ``start``, ``stop`` or ``reset``) member
 functions of the created client component instance should be called::
 
@@ -549,7 +549,7 @@ functions of the created client component instance should be called::
         "/threads{locality#0/total}/count/cumulative");
     hpx::cout << count.get_value<int>().get() << hpx::endl;
 
-For more information about the client component type see [classref
+For more information about the client component type, see [classref
 hpx::performance_counters::performance_counter].
 
 .. note::
@@ -571,17 +571,17 @@ Providing performance counter data
 
 |hpx| offers several ways by which you may provide your own data as a
 performance counter. This has the benefit of exposing additional, possibly
-application specific information using the existing Performance Counter
+application-specific information using the existing Performance Counter
 framework, unifying the process of gathering data about your application.
 
-An application that wants to provide counter data can implement a Performance
-Counter to provide the data. When a consumer queries performance data, the |hpx|
+An application that wants to provide counter data can implement a performance
+counter to provide the data. When a consumer queries performance data, the |hpx|
 runtime system calls the provider to collect the data. The runtime system uses
 an internal registry to determine which provider to call.
 
-Generally, there are two ways of exposing your own Performance Counter data: a
-simple, function based way and a more complex, but more powerful way of
-implementing a full Performance Counter. Both alternatives are described in the
+Generally, there are two ways of exposing your own performance counter data: a
+simple, function-based way and a more complex, but more powerful way of
+implementing a full performance counter. Both alternatives are described in the
 following sections.
 
 .. _simple_counters:
@@ -591,7 +591,7 @@ Exposing performance counter data using a simple function
 
 The simplest way to expose arbitrary numeric data is to write a function which
 will then be called whenever a consumer queries this counter. Currently, this
-type of Performance Counter can only be used to expose integer values. The
+type of performance counter can only be used to expose integer values. The
 expected signature of this function is::
 
     std::int64_t some_performance_data(bool reset);
@@ -613,18 +613,18 @@ For instance, here is such a function returning how often it was invoked::
         return result;
     }
 
-This example function exposes a linearly increasing value as our performance
-data. The value is incremented on each invocation, e.g. each time a consumer
-requests the counter data of this Performance Counter.
+This example function exposes a linearly-increasing value as our performance
+data. The value is incremented on each invocation, i.e., each time a consumer
+requests the counter data of this performance counter.
 
 The next step in exposing this counter to the runtime system is to register the
 function as a new raw counter type using the |hpx| API function
 :cpp:func:`hpx::performance_counters::install_counter_type`. A counter type
 represents certain common characteristics of counters, like their counter type
-name, and any associated description information. The following snippet shows an
-example of how to register the function ``some_performance_data`` which is shown
-above for a counter type named ``"/test/data"``. This registration has to be
-executed before any consumer instantiates and queries an instance of this
+name and any associated description information. The following snippet shows an
+example of how to register the function ``some_performance_data``, which is shown
+above, for a counter type named ``"/test/data"``. This registration has to be
+executed before any consumer instantiates, and queries an instance of this
 counter type::
 
     #include <hpx/include/performance_counters.hpp>
@@ -641,12 +641,12 @@ counter type::
     }
 
 Now it is possible to instantiate a new counter instance based on the naming
-scheme ``"/test{locality#*/total}/data"`` where ``*`` is a zero based integer
+scheme ``"/test{locality#*/total}/data"`` where ``*`` is a zero-based integer
 index identifying the :term:`locality` for which the counter instance should be
 accessed. The function
-:cpp:func:`hpx::performance_counters::install_counter_type` enables to
+:cpp:func:`hpx::performance_counters::install_counter_type` enables users to
 instantiate exactly one counter instance for each :term:`locality`. Repeated
-requests to instantiate such a counter will return the same instance, e.g. the
+requests to instantiate such a counter will return the same instance, i.e., the
 instance created for the first request.
 
 If this counter needs to be accessed using the standard |hpx| command line
@@ -679,27 +679,27 @@ for a full example demonstrating this functionality.
 Implementing a full performance counter
 ---------------------------------------
 
-Sometimes, the simple way of exposing a single value as a Performance Counter is
+Sometimes, the simple way of exposing a single value as a performance counter is
 not sufficient. For that reason, |hpx| provides a means of implementing full
-Performance Counters which support:
+performance counters which support:
 
-* Retrieving the descriptive information about the Performance Counter
+* Retrieving the descriptive information about the performance counter
 * Retrieving the current counter value
-* Resetting the Performance Counter (value)
-* Starting the Performance Counter
-* Stopping the Performance Counter
-* Setting the (initial) value of the Performance Counter
+* Resetting the performance counter (value)
+* Starting the performance counter
+* Stopping the performance counter
+* Setting the (initial) value of the performance counter
 
-Every full Performance Counter will implement a predefined interface:
+Every full performance counter will implement a predefined interface:
 
 .. literalinclude:: ../../hpx/performance_counters/performance_counter.hpp
    :language: c++
 
-In order to implement a full Performance Counter you have to create an |hpx|
-component exposing this interface. To simplify this task, |hpx| provides a ready
-made base class which handles all the boiler plate of creating a component for
-you. The remainder of this section will explain the process of creating a full
-Performance Counter based on the Sine example which you can find in the
+In order to implement a full performance counter, you have to create an |hpx|
+component exposing this interface. To simplify this task, |hpx| provides a
+ready-made base class which handles all the boiler plate of creating
+a component for you. The remainder of this section will explain the process of creating a full
+performance counter based on the Sine example, which you can find in the
 directory ``examples/performance_counters/sine/``.
 
 The base class is defined in the header file [hpx_link
@@ -710,13 +710,13 @@ as:
    :language: c++
 
 The single template parameter is expected to receive the type of the
-derived class implementing the Performance Counter. In the Sine example
+derived class implementing the performance counter. In the Sine example
 this looks like:
 
 .. literalinclude:: ../../examples/performance_counters/sine/server/sine.hpp
    :language: c++
 
-i.e. the type ``sine_counter`` is derived from the base class passing the type
+i.e., the type ``sine_counter`` is derived from the base class passing the type
 as a template argument (please see [hpx_link
 examples/performance_counters/sine/server/sine.hpp..sine.hpp] for the full
 source code of the counter definition). For more information about this
@@ -726,22 +726,22 @@ instance the corresponding `Wikipedia article
 class itself is derived from the ``performance_counter`` interface described
 above.
 
-Additionally, a full Performance Counter implementation not only exposes the
-actual value but also provides information about
+Additionally, a full performance counter implementation not only exposes the
+actual value but also provides information about:
 
-* The point in time a particular value was retrieved
-* A (sequential) invocation count
-* The actual counter value
-* An optional scaling coefficient
-* Information about the counter status
+* The point in time a particular value was retrieved.
+* A (sequential) invocation count.
+* The actual counter value.
+* An optional scaling coefficient.
+* Information about the counter status.
 
 .. _counters:
 
 Existing |hpx| performance counters
 -----------------------------------
 
-The |hpx| runtime system exposes a wide variety of predefined Performance
-Counters. These counters expose critical information about different modules of
+The |hpx| runtime system exposes a wide variety of predefined performance
+counters. These counters expose critical information about different modules of
 the runtime system. They can help determine system bottlenecks and fine-tune
 system and application performance.
 
@@ -2601,7 +2601,7 @@ system and application performance.
 
    The ``/arithmetics`` counters can consume an arbitrary number of other
    counters. For this reason those have to be specified as parameters (a comma
-   separated list of counters appended after a ``'@'``. For instance:
+   separated list of counters appended after a ``'@'``). For instance:
 
    .. code-block:: bash
 
@@ -2735,7 +2735,7 @@ system and application performance.
    The performance counters related to :term:`parcel` coalescing are available only if
    the configuration time constant ``HPX_WITH_PARCEL_COALESCING`` is set to
    ``ON`` (default: ``ON``). However, even in this case it will be available
-   only for those actions, which are enabled for parcel coalescing (see the
+   only for actions that are enabled for parcel coalescing (see the
    macros :c:macro:`HPX_ACTION_USES_MESSAGE_COALESCING` and
    :c:macro:`HPX_ACTION_USES_MESSAGE_COALESCING_NOTHROW`).
 
@@ -2747,10 +2747,10 @@ APEX integration
 |hpx| provides integration with |apex|_, which is a framework for application
 profiling using task timers and various performance counters. It can be added as
 a ``git`` submodule by turning on the option :option:`HPX_WITH_APEX:BOOL` during
-|cmake|_ configuration. |tau|_ is an optional dependency when using |apex|_.
+|cmake| configuration. |tau|_ is an optional dependency when using |apex|.
 
-To build |hpx| with |apex|_ add :option:`HPX_WITH_APEX`\ ``=ON``, and,
-optionally, ``TAU_ROOT=$PATH_TO_TAU`` to your |cmake|_ configuration. In
-addition, you can override the tag used for |apex|_ with the
+To build |hpx| with |apex|, add :option:`HPX_WITH_APEX`\ ``=ON``, and,
+optionally, ``TAU_ROOT=$PATH_TO_TAU`` to your |cmake| configuration. In
+addition, you can override the tag used for |apex| with the
 :option:`HPX_WITH_APEX_TAG` option. Please see the |apex_hpx_doc|_ for detailed
-instructions on using |apex|_ with |hpx|.
+instructions on using |apex| with |hpx|.
