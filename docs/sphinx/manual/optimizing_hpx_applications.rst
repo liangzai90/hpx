@@ -122,7 +122,7 @@ milliseconds).
 Performance counter types
 -------------------------
 
-Every Performance Counter belongs to a specific Performance Counter type which
+Every performance counter belongs to a specific performance counter type which
 classifies the counters into groups of common semantics. The type of a counter
 is identified by the ``objectname`` and the ``countername`` parts of the name.
 
@@ -131,7 +131,7 @@ is identified by the ``objectname`` and the ``countername`` parts of the name.
    /objectname/countername
 
 When an application starts |hpx| will register all available counter types on each of
-the localities. These counter types are held in a special Performance Counter
+the localities. These counter types are held in a special performance counter
 registration database, which can be used to retrieve the meta data related
 to a counter type and to create counter instances based on a given counter
 instance name.
@@ -156,7 +156,7 @@ While simple counters use instance names formatted as
 counters have the full counter name of the embedded counter as their instance
 name.
 
-Not all simple counter types require specifying all 4 elements of a full counter
+Not all simple counter types require specifying all four elements of a full counter
 instance name; some of the parts (``parentinstancename``, ``parentindex``,
 ``instancename``, and ``instanceindex``) are optional for specific counters.
 Please refer to the documentation of a particular counter for more information
@@ -171,8 +171,8 @@ the documentation of a particular counter for more information about what
 parameters are supported, how to specify them, and what default values are
 assumed (see also :ref:`counters`).
 
-Every :term:`locality` of an application exposes its own set of Performance
-Counter types and Performance Counter instances. The set of exposed counters is
+Every :term:`locality` of an application exposes its own set of performance
+counter types and performance counter instances. The set of exposed counters is
 determined dynamically at application start based on the execution environment
 of the application. For instance, this set is influenced by the current hardware
 environment for the :term:`locality` (such as whether the :term:`locality` has
@@ -185,12 +185,12 @@ Using wildcards in performance counter names
 --------------------------------------------
 
 It is possible to use wildcard characters when specifying performance counter
-names. Performance counter names can contain 2 types of wildcard characters:
+names. Performance counter names can contain two types of wildcard characters:
 
 * Wildcard characters in the performance counter type
 * Wildcard characters in the performance counter instance name
 
-Wildcard character have a meaning which is very close to usual file name
+A wildcard character has a meaning which is very close to usual file name
 wildcard matching rules implemented by common shells (like bash).
 
 .. list-table:: Wildcard characters in the performance counter type
@@ -221,7 +221,7 @@ wildcard matching rules implemented by common shells (like bash).
 Consuming performance counter data
 ----------------------------------
 
-You can consume performance data using either the command line interface or via
+You can consume performance data using either the command line interface,
 the |hpx| application or the |hpx| API. The command line interface is easier to
 use, but it is less flexible and does not allow one to adjust the behaviour of
 your application at runtime. The command line interface provides a convenience
@@ -234,9 +234,9 @@ Consuming performance counter data from the command line
 --------------------------------------------------------
 
 |hpx| provides a set of predefined command line options for every application
-which uses ``hpx::init`` for its initialization. While there are much more
+that uses ``hpx::init`` for its initialization. While there are many more
 command line options available (see :ref:`commandline`), the set of options related
-to Performance Counters allow one to list existing counters, query existing
+to performance counters allows one to list existing counters, and query existing
 counters once at application termination or repeatedly after a constant time
 interval.
 
@@ -247,52 +247,52 @@ The following table summarizes the available command line options:
    * * Command line option
      * Description
    * * ``--hpx:print-counter``
-     * print the specified performance counter either repeatedly and/or at the
+     * Prints the specified performance counter either repeatedly and/or at the
        times specified by ``--hpx:print-counter-at`` (see also option
        ``--hpx:print-counter-interval``).
    * * ``--hpx:print-counter-reset``
-     * print the specified performance counter either repeatedly and/or at the
-       times specified by ``--hpx:print-counter-at`` reset the counter after the
-       value is queried. (see also option ``--hpx:print-counter-interval``).
+     * Prints the specified performance counter either repeatedly and/or at the
+       times specified by ``--hpx:print-counter-at``. Reset the counter after the
+       value is queried (see also option ``--hpx:print-counter-interval``).
    * * ``--hpx:print-counter-interval``
-     * print the performance counter(s) specified with ``--hpx:print-counter``
+     * Prints the performance counter(s) specified with ``--hpx:print-counter``
        repeatedly after the time interval (specified in milliseconds)
        (default:``0`` which means print once at shutdown).
    * * ``--hpx:print-counter-destination``
-     * print the performance counter(s) specified with ``--hpx:print-counter``
-       to the given file (default: console)).
+     * Prints the performance counter(s) specified with ``--hpx:print-counter``
+       to the given file (default: console).
    * * ``--hpx:list-counters``
-     * list the names of all registered performance counters.
+     * Lists the names of all registered performance counters.
    * * ``--hpx:list-counter-infos``
-     * list the description of all registered performance counters.
+     * Lists the description of all registered performance counters.
    * * ``--hpx:print-counter-format``
-     * print the performance counter(s) specified with ``--hpx:print-counter``
-       possible formats in csv format with header or without any header (see
+     * Prints the performance counter(s) specified with ``--hpx:print-counter``.
+       Possible formats in CVS format with header or without any header (see
        option ``--hpx:no-csv-header``), possible values: ``csv`` (prints counter
        values in CSV format with full names as header) ``csv-short`` (prints
        counter values in CSV format with shortnames provided with
        ``--hpx:print-counter`` as ``--hpx:print-counter
-       shortname,full-countername``)
+       shortname,full-countername``).
    * * ``--hpx:no-csv-header``
-     * print the performance counter(s) specified with ``--hpx:print-counter``
+     * Prints the performance counter(s) specified with ``--hpx:print-counter``
        and ``csv`` or ``csv-short`` format specified with
        ``--hpx:print-counter-format`` without header.
    * * ``--hpx:print-counter-at arg``
-     * print the performance counter(s) specified with ``--hpx:print-counter``
-       (or ``--hpx:print-counter-reset``) at the given point in time, possible
+     * Prints the performance counter(s) specified with ``--hpx:print-counter``
+       (or ``--hpx:print-counter-reset``) at the given point in time. Possible
        argument values: ``startup``, ``shutdown`` (default), ``noshutdown``.
    * * ``--hpx:reset-counters``
-     * reset all performance counter(s) specified with ``--hpx:print-counter``
-       after they have been evaluated)
+     * Resets all performance counter(s) specified with ``--hpx:print-counter``
+       after they have been evaluated.
 
 While the options ``--hpx:list-counters`` and ``--hpx:list-counter-infos`` give
-a short listing of all available counters, the full documentation for those can
+a short list of all available counters, the full documentation for those can
 be found in the section :ref:`counters`.
 
 A simple example
 ----------------
 
-All of the commandline options mentioned above can be for instance tested using
+All of the commandline options mentioned above can be tested using
 the ``hello_world_distributed`` example.
 
 Listing all available counters ``hello_world_distributed --hpx:list-counters``
@@ -309,7 +309,7 @@ yields:
    /threads{locality#*/total}/idle-rate
    /threads{locality#*/worker-thread#*}/idle-rate
 
-Providing more information about all available counters
+Providing more information about all available counters,
 ``hello_world_distributed --hpx:list-counter-infos`` yields:
 
 .. code-block:: text
@@ -360,10 +360,10 @@ which yields for instance:
 
 The first line is the normal output generated by ``hello_world_distributed`` and
 has no relation to the counter data listed. The last two lines contain the
-counter data as gathered at application shutdown. These lines have 6 fields, the
+counter data as gathered at application shutdown. These lines have six fields, the
 counter name, the sequence number of the counter invocation, the time stamp at
 which this information has been sampled, the unit of measure for the time stamp,
-the actual counter value, and an optional unit of measure for the counter value.
+the actual counter value and an optional unit of measure for the counter value.
 
 The actual counter value can be represented by a single number (for counters
 returning singular values) or a list of numbers separated by ``':'`` (for
@@ -405,7 +405,7 @@ wildcards for a (very limited) set of use cases. In particular, all occurrences
 of ``#*`` as in ``locality#*`` and in ``worker-thread#*`` will be automatically
 expanded to the proper set of performance counter names representing the actual
 environment for the executed program. For instance, if your program is utilizing
-4 worker threads for the execution of HPX threads (see command line option
+four worker threads for the execution of |hpx| threads (see command line option
 :option:`--hpx:threads`) the following command line
 
 .. code-block:: bash
@@ -429,7 +429,7 @@ threads:
    /threads{locality#0/worker-thread#3}/count/cumulative,1,0.0025904,[s],33
 
 The command ``--hpx:print-counter-format`` takes values ``csv`` and
-``csv-short`` to generate CSV formatted counter values with header.
+``csv-short`` to generate CSV formatted counter values with a header.
 
 With format as csv:
 
@@ -441,8 +441,8 @@ With format as csv:
        --hpx:print-counter /threads{locality#*/total}/count/cumulative \
        --hpx:print-counter /threads{locality#*/total}/count/cumulative-phases
 
-will print the values of performance counters in CSV format with full
-countername as header:
+will print the values of performance counters in CSV format with the full
+countername as a header:
 
 .. code-block:: text
 
@@ -461,8 +461,8 @@ With format csv-short:
        --hpx:print-counter cumulative,/threads{locality#*/total}/count/cumulative \
        --hpx:print-counter phases,/threads{locality#*/total}/count/cumulative-phases
 
-will print the values of performance counters in CSV format with short countername
-as header:
+will print the values of performance counters in CSV format with the short countername
+as a header:
 
 .. code-block:: text
 
@@ -492,7 +492,7 @@ will print the header only once repeating the performance counter value(s) repea
    hello world from OS-thread 0 on locality 0
    44,95
 
-The command ``--hpx:no-csv-header`` to be used with
+The command ``--hpx:no-csv-header`` can be used with
 ``--hpx:print-counter-format`` to print performance counter values in CSV format
 without any header:
 
@@ -518,8 +518,8 @@ will print:
 Consuming performance counter data using the |hpx| API
 ------------------------------------------------------
 
-|hpx| provides an API allowing to discover performance counters and to retrieve
-the current value of any existing performance counter from any application.
+|hpx| provides an API that allows users to discover performance counters and
+to retrieve the current value of any existing performance counter from any application.
 
 Discover existing performance counters
 --------------------------------------
