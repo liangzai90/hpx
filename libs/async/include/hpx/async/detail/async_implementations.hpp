@@ -8,6 +8,8 @@
 #define HPX_LCOS_ASYNC_IMPLEMENTATIONS_APR_13_2015_0829AM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/traits/action_select_direct_execution.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/detail/async_implementations_fwd.hpp>
 #include <hpx/errors.hpp>
@@ -19,11 +21,9 @@
 #include <hpx/threading.hpp>
 #include <hpx/threading_base/thread_init_data.hpp>
 #include <hpx/traits/action_decorate_function.hpp>
-#include <hpx/traits/action_select_direct_execution.hpp>
 #include <hpx/traits/action_was_object_migrated.hpp>
 #include <hpx/traits/component_supports_migration.hpp>
 #include <hpx/traits/component_type_is_compatible.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/future_access.hpp>
 
 #include <cstddef>

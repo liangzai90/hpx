@@ -8,7 +8,7 @@
 #define HPX_3C373507_9301_4368_B718_39D25FDF06F4
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/actions/continuation.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
 
 #endif

@@ -8,7 +8,7 @@
 #if !defined(HPX_RUNTIME_APPLIER_APPLY_CONTINUE_FWD_HPP)
 #define HPX_RUNTIME_APPLIER_APPLY_CONTINUE_FWD_HPP
 
-#include <hpx/runtime/actions_fwd.hpp>
+#include <hpx/actions/actions_fwd.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 
 namespace hpx {

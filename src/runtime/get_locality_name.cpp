@@ -8,7 +8,7 @@
 #include <hpx/async.hpp>
 #include <hpx/async/apply.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/get_locality_name.hpp>
 #include <hpx/runtime.hpp>
 

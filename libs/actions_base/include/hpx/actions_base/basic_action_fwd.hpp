@@ -17,14 +17,13 @@
 #include <hpx/functional/traits/get_action_name.hpp>
 #include <hpx/runtime/actions/preassigned_action_id.hpp>
 
-namespace hpx { namespace actions
-{
+namespace hpx { namespace actions {
     ///////////////////////////////////////////////////////////////////////////
     /// \tparam Component         component type
     /// \tparam Signature         return type and arguments
     /// \tparam Derived           derived action class
     template <typename Component, typename Signature, typename Derived>
     struct basic_action;
-}}
+}}    // namespace hpx::actions
 
 #endif /*HPX_RUNTIME_ACTIONS_BASIC_ACTION_FWD_HPP*/

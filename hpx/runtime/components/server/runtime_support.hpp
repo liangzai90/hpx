@@ -19,7 +19,7 @@
 #include <hpx/plugin.hpp>
 #include <hpx/plugins/plugin_factory_base.hpp>
 #include <hpx/program_options.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 #include <hpx/runtime/actions/manage_object_action.hpp>
 #include <hpx/runtime/components/component_type.hpp>
 #include <hpx/runtime/components/server/create_component.hpp>

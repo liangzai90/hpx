@@ -102,6 +102,7 @@ add_hpx_module(async
   HEADERS ${async_headers}
   COMPAT_HEADERS ${async_compat_headers}
   DEPENDENCIES
+    hpx_actions
     hpx_allocator_support
     hpx_config
     hpx_coroutines

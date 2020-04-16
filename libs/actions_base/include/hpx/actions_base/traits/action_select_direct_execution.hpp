@@ -12,12 +12,10 @@
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/type_support/detail/wrap_int.hpp>
 
-namespace hpx { namespace traits
-{
+namespace hpx { namespace traits {
     ///////////////////////////////////////////////////////////////////////////
     // Customization point for action capabilities
-    namespace detail
-    {
+    namespace detail {
         struct select_direct_execution_helper
         {
             // by default we return the unchanged function
@@ -31,10 +29,8 @@ namespace hpx { namespace traits
             // forward the call if the component implements the function
             template <typename Action>
             static auto call(int, launch policy, naming::address_type lva)
-            ->  decltype(
-                    Action::component_type::select_direct_execution(
-                        Action(), policy, lva)
-                )
+                -> decltype(Action::component_type::select_direct_execution(
+                    Action(), policy, lva))
             {
                 using component_type = typename Action::component_type;
                 return component_type::select_direct_execution(
@@ -49,18 +45,16 @@ namespace hpx { namespace traits
             return select_direct_execution_helper::template call<Action>(
                 0, policy, lva);
         }
-    }
+    }    // namespace detail
 
     template <typename Action, typename Enable = void>
     struct action_select_direct_execution
     {
-        static constexpr launch call(launch policy,
-            naming::address_type lva)
+        static constexpr launch call(launch policy, naming::address_type lva)
         {
             return detail::call_select_direct_execution<Action>(policy, lva);
         }
     };
-}}
+}}    // namespace hpx::traits
 
 #endif
-

@@ -46,7 +46,7 @@
 #include <hpx/serialization/serialize.hpp>
 #include <hpx/serialization/vector.hpp>
 #include <hpx/thread_support/unlock_guard.hpp>
-#include <hpx/traits/action_priority.hpp>
+#include <hpx/actions_base/traits/action_priority.hpp>
 #include <hpx/traits/action_was_object_migrated.hpp>
 #include <hpx/traits/component_supports_migration.hpp>
 #include <hpx/type_support/unused.hpp>

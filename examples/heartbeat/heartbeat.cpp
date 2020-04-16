@@ -11,7 +11,7 @@
 #include <hpx/errors/exception.hpp>
 #include <hpx/include/performance_counters.hpp>
 #include <hpx/include/lcos.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/threading_base/thread_helpers.hpp>
 #include <hpx/lcos/future.hpp>
 #include <hpx/state.hpp>

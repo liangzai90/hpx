@@ -16,7 +16,7 @@
 #include <hpx/synchronization/condition_variable.hpp>
 #include <hpx/runtime/agas_fwd.hpp>
 #include <hpx/runtime/agas/gva.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 #include <hpx/runtime/components/server/fixed_component_base.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/runtime/naming/name.hpp>

@@ -14,8 +14,9 @@
 #include <hpx/config.hpp>
 
 #if defined(HPX_HAVE_NETWORKING)
-#include <hpx/runtime/actions/transfer_base_action.hpp>
+#include <hpx/actions/base_action.hpp>
 #include <hpx/async/applier/apply_helper.hpp>
+#include <hpx/runtime/actions/transfer_base_action.hpp>
 #include <hpx/runtime/parcelset/detail/per_action_data_counter_registry.hpp>
 #include <hpx/serialization/input_archive.hpp>
 #include <hpx/serialization/output_archive.hpp>

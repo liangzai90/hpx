@@ -14,13 +14,13 @@
 #include <hpx/assertion.hpp>
 #include <hpx/errors.hpp>
 #include <hpx/runtime.hpp>
-#include <hpx/runtime/actions_fwd.hpp>
+#include <hpx/actions/actions_fwd.hpp>
 #include <hpx/runtime/parcelset_fwd.hpp>
 #include <hpx/runtime/runtime_fwd.hpp>
-#include <hpx/runtime/actions/base_action.hpp>
+#include <hpx/actions/base_action.hpp>
 #include <hpx/runtime/actions/transfer_action.hpp>
 #include <hpx/runtime/actions/transfer_continuation_action.hpp>
-#include <hpx/runtime/actions_fwd.hpp>
+#include <hpx/actions/actions_fwd.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/runtime/naming/split_gid.hpp>

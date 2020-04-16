@@ -9,10 +9,10 @@
 #if !defined(HPX_LCOS_ASYNC_CONTINUE_CALLBACK_MAR_30_2015_1132AM)
 #define HPX_LCOS_ASYNC_CONTINUE_CALLBACK_MAR_30_2015_1132AM
 
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/async/applier/apply_callback.hpp>
 #include <hpx/async/async_callback_fwd.hpp>
 #include <hpx/async/async_continue.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 #include <hpx/traits/promise_remote_result.hpp>

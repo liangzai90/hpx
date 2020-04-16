@@ -8,9 +8,9 @@
 #define HPX_PARALLEL_ALGORITHM_REMOTE_DISPATCH_OCT_15_2014_0938PM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/datastructures/tuple.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
 #include <hpx/runtime/components/colocating_distribution_policy.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
@@ -141,11 +141,10 @@ namespace hpx { namespace parallel { inline namespace v1 { namespace detail {
             typename traits1::local_iterator, typename traits2::local_iterator>>
         call(future<arg_type>&& f)
         {
-            return f.then(
-                hpx::launch::sync,
-                [](future<arg_type> &&
-                    f) -> std::pair<typename traits1::local_iterator,
-                           typename traits2::local_iterator> {
+            return f.then(hpx::launch::sync,
+                [](future<arg_type>&& f)
+                    -> std::pair<typename traits1::local_iterator,
+                        typename traits2::local_iterator> {
                     auto&& p = f.get();
                     return std::make_pair(
                         traits1::remote(p.first), traits2::remote(p.second));
@@ -175,12 +174,11 @@ namespace hpx { namespace parallel { inline namespace v1 { namespace detail {
             typename traits3::local_iterator>>
         call(future<arg_type>&& f)
         {
-            return f.then(
-                hpx::launch::sync,
-                [](future<arg_type> &&
-                    f) -> hpx::util::tuple<typename traits1::local_iterator,
-                           typename traits2::local_iterator,
-                           typename traits3::local_iterator> {
+            return f.then(hpx::launch::sync,
+                [](future<arg_type>&& f)
+                    -> hpx::util::tuple<typename traits1::local_iterator,
+                        typename traits2::local_iterator,
+                        typename traits3::local_iterator> {
                     auto&& p = f.get();
                     return hpx::util::make_tuple(
                         traits1::remote(std::move(hpx::util::get<0>(p))),

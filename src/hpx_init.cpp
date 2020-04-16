@@ -23,7 +23,7 @@
 #include <hpx/hpx_user_main_config.hpp>
 #include <hpx/logging.hpp>
 #include <hpx/performance_counters/counters.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/agas/interface.hpp>
 #include <hpx/runtime/components/runtime_support.hpp>
 #include <hpx/runtime/config_entry.hpp>

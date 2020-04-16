@@ -9,21 +9,20 @@
 #ifndef HPX_TRAITS_ACTION_REMOTE_RESULT_HPP
 #define HPX_TRAITS_ACTION_REMOTE_RESULT_HPP
 
-namespace hpx { namespace traits
-{
-    namespace detail
-    {
+namespace hpx { namespace traits {
+    namespace detail {
         template <typename Result, typename Enable = void>
         struct action_remote_result_customization_point
         {
             typedef Result type;
         };
-    }
+    }    // namespace detail
 
     template <typename Result>
     struct action_remote_result
       : detail::action_remote_result_customization_point<Result>
-    {};
-}}
+    {
+    };
+}}    // namespace hpx::traits
 
 #endif

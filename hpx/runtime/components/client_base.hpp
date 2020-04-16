@@ -20,7 +20,7 @@
 #include <hpx/runtime/naming/unmanaged.hpp>
 #include <hpx/serialization/serialize.hpp>
 #include <hpx/traits/acquire_future.hpp>
-#include <hpx/traits/action_remote_result.hpp>
+#include <hpx/actions_base/traits/action_remote_result.hpp>
 #include <hpx/traits/future_access.hpp>
 #include <hpx/traits/future_traits.hpp>
 #include <hpx/traits/is_client.hpp>

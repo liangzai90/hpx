@@ -8,13 +8,11 @@
 #ifndef HPX_ACTIONS_ACTION_PRIORITY_HPP
 #define HPX_ACTIONS_ACTION_PRIORITY_HPP
 
-#include <hpx/async/async_fwd.hpp>
+#include <hpx/actions_base/traits/action_priority.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/coroutines/thread_enums.hpp>
-#include <hpx/traits/action_priority.hpp>
-#include <hpx/traits/extract_action.hpp>
 
-namespace hpx { namespace actions
-{
+namespace hpx { namespace actions {
     template <typename Action>
     threads::thread_priority action_priority()
     {
@@ -22,12 +20,12 @@ namespace hpx { namespace actions
         threads::thread_priority priority =
             static_cast<threads::thread_priority>(
                 traits::action_priority<action_type_>::value);
-//         The mapping to 'normal' is now done at the last possible moment in
-//         the scheduler.
-//         if (priority == threads::thread_priority_default)
-//             priority = threads::thread_priority_normal;
+        // The mapping to 'normal' is now done at the last possible moment in
+        // the scheduler.
+        // if (priority == threads::thread_priority_default)
+        //     priority = threads::thread_priority_normal;
         return priority;
     }
-}}
+}}    // namespace hpx::actions
 
 #endif

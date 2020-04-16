@@ -14,7 +14,8 @@
     "The header hpx/lcos/async_continue_callback_fwd.hpp is deprecated, \
     please include hpx/async/async_continue_callback_fwd.hpp instead")
 #else
-#warning "The header hpx/lcos/async_continue_callback_fwd.hpp is deprecated, \
+#warning                                                                       \
+    "The header hpx/lcos/async_continue_callback_fwd.hpp is deprecated, \
     please include hpx/async/async_continue_callback_fwd.hpp instead"
 #endif
 #endif

@@ -17,11 +17,11 @@
 #include <hpx/async/applier/apply.hpp>
 #include <hpx/async/applier/apply_callback.hpp>
 #include <hpx/runtime/components/component_type.hpp>
-#include <hpx/traits/action_priority.hpp>
+#include <hpx/actions_base/traits/action_priority.hpp>
 #include <hpx/traits/action_was_object_migrated.hpp>
 #include <hpx/traits/component_supports_migration.hpp>
 #include <hpx/traits/component_type_is_compatible.hpp>
-#include <hpx/traits/extract_action.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 
 #include <boost/asio/error.hpp>
 

@@ -7,13 +7,13 @@
 #if !defined(HPX_LCOS_ASYNC_COLOCATED_CALLBACK_MAR_30_2015_1146AM)
 #define HPX_LCOS_ASYNC_COLOCATED_CALLBACK_MAR_30_2015_1146AM
 
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/async_continue_callback.hpp>
 #include <hpx/async/detail/async_colocated.hpp>
 #include <hpx/async/detail/async_colocated_callback_fwd.hpp>
 #include <hpx/runtime/agas/primary_namespace.hpp>
 #include <hpx/runtime/agas/server/primary_namespace.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 
 #include <utility>

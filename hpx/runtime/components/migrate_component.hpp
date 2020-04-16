@@ -13,7 +13,7 @@
 #include <hpx/async/async.hpp>
 #include <hpx/async/detail/async_colocated.hpp>
 #include <hpx/lcos/future.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/components/client_base.hpp>
 #include <hpx/runtime/components/server/migrate_component.hpp>
 #include <hpx/runtime/components/target_distribution_policy.hpp>

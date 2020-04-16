@@ -8,12 +8,15 @@
 #define HPX_RUNTIME_ACTIONS_FWD_HPP
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/actions_base_fwd.hpp>
 #include <hpx/runtime/actions/continuation_fwd.hpp>
+#if HPX_HAVE_ITTNOTIFY != 0 && !defined(HPX_HAVE_APEX)
+#include <hpx/concurrency/itt_notify.hpp>
+#endif
 
 #include <cstdint>
 
-namespace hpx { namespace actions
-{
+namespace hpx { namespace actions {
     /// \cond NOINTERNAL
 
     struct base_action;
@@ -27,25 +30,20 @@ namespace hpx { namespace actions
     struct transfer_continuation_action;
 #endif
 
-    template <typename Component, typename Signature, typename Derived>
-    struct basic_action;
-
-    namespace detail
-    {
+    namespace detail {
         HPX_API_EXPORT std::uint32_t get_action_id_from_name(
             char const* action_name);
-    }
 
-    /// The type of an action defines whether this action will be executed
-    /// directly or by an HPX-threads
-    enum class action_flavor
-    {
-        plain_action = 0, ///< The action will be executed by a newly created thread
-        direct_action = 1 ///< The action needs to be executed directly
-    };
+        template <typename Action>
+        std::uint32_t get_action_id();
+
+#if HPX_HAVE_ITTNOTIFY != 0 && !defined(HPX_HAVE_APEX)
+        template <typename Action>
+        util::itt::string_handle const& get_action_name_itt();
+#endif
+    }    // namespace detail
 
     /// \endcond
-}}
+}}    // namespace hpx::actions
 
 #endif
-

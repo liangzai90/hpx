@@ -17,7 +17,7 @@
 #include <hpx/assertion.hpp>
 #include <hpx/errors.hpp>
 #include <hpx/logging.hpp>
-#include <hpx/runtime/actions/basic_action.hpp>
+#include <hpx/actions_base/basic_action.hpp>
 #include <hpx/runtime/naming/split_gid.hpp>
 #include <hpx/runtime/parcelset/parcel.hpp>
 #include <hpx/runtime/parcelset/parcel_buffer.hpp>

@@ -9,7 +9,7 @@
 #define HPX_4AFE0EEA_49F8_4F4C_8945_7B55BF395DA0
 
 #include <hpx/config.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 #include <hpx/runtime/components/server/component_base.hpp>
 #include <hpx/serialization/vector.hpp>
 

@@ -10,7 +10,7 @@
 
 #include <hpx/config.hpp>
 #include <hpx/lcos/base_lco_with_value.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 #include <hpx/runtime/agas/locality_namespace.hpp>
 #include <hpx/runtime/agas/server/locality_namespace.hpp>
 #include <hpx/async/applier/apply.hpp>

@@ -9,7 +9,7 @@
 #include <hpx/lcos/future.hpp>
 #include <hpx/resource_partitioner/detail/partitioner.hpp>
 #include <hpx/runtime.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/get_os_thread_count.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/serialization/serialize.hpp>

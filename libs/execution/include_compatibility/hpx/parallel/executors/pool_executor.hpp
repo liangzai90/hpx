@@ -14,7 +14,8 @@
     "The header hpx/parallel/executors/pool_executor.hpp is deprecated, \
     please include hpx/execution/executors/pool_executor.hpp instead")
 #else
-#warning "The header hpx/parallel/executors/pool_executor.hpp is deprecated, \
+#warning                                                                       \
+    "The header hpx/parallel/executors/pool_executor.hpp is deprecated, \
     please include hpx/execution/executors/pool_executor.hpp instead"
 #endif
 #endif

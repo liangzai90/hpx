@@ -11,12 +11,12 @@
 #include <hpx/config.hpp>
 
 #if defined(HPX_HAVE_NETWORKING)
+#include <hpx/actions/action_support.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/format.hpp>
 #include <hpx/functional/bind_front.hpp>
 #include <hpx/runtime.hpp>
-#include <hpx/runtime/actions/action_support.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
 #include <hpx/runtime/agas/addressing_service.hpp>
 #include <hpx/runtime/agas/big_boot_barrier.hpp>
 #include <hpx/runtime/agas/detail/hosted_component_namespace.hpp>

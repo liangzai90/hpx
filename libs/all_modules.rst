@@ -14,6 +14,8 @@ All modules
 .. toctree::
    :maxdepth: 2
 
+   /libs/actions/docs/index.rst
+   /libs/actions_base/docs/index.rst
    /libs/affinity/docs/index.rst
    /libs/algorithms/docs/index.rst
    /libs/allocator_support/docs/index.rst

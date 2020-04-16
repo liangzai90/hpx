@@ -13,7 +13,7 @@
 #include <hpx/config.hpp>
 #include <hpx/runtime/agas_fwd.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 #include <hpx/runtime/components/component_type.hpp>
 #include <hpx/runtime/components/server/fixed_component_base.hpp>
 #include <hpx/functional/function.hpp>

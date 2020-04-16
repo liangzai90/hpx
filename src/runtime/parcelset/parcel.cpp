@@ -11,7 +11,7 @@
 #include <hpx/assertion.hpp>
 #include <hpx/concurrency/itt_notify.hpp>
 #include <hpx/runtime.hpp>
-#include <hpx/runtime/actions/base_action.hpp>
+#include <hpx/actions/base_action.hpp>
 #include <hpx/runtime/actions/detail/action_factory.hpp>
 #include <hpx/runtime/agas/addressing_service.hpp>
 #include <hpx/async/applier/applier.hpp>

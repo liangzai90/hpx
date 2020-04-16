@@ -10,7 +10,7 @@
 
 #include <hpx/hpx.hpp>
 #include <hpx/include/components.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 
 #include <cstdint>
 

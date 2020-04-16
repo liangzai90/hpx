@@ -18,7 +18,7 @@
 #include <hpx/async/async_fwd.hpp>
 #include <hpx/lcos/future.hpp>
 #include <hpx/async/applier/apply.hpp>
-#include <hpx/traits/extract_action.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/traits/is_continuation.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 #include <hpx/type_support/pack.hpp>

@@ -15,8 +15,8 @@
 #include <hpx/preprocessor/cat.hpp>
 #include <hpx/preprocessor/expand.hpp>
 #include <hpx/preprocessor/nargs.hpp>
-#include <hpx/runtime/actions/basic_action.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/basic_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 #include <hpx/runtime/components/component_type.hpp>
 #include <hpx/runtime/components/server/component_base.hpp>
 #include <hpx/runtime/components/server/component_heap.hpp>

@@ -21,7 +21,7 @@
 #include <hpx/async_combinators/wait_all.hpp>
 #include <hpx/performance_counters/counters.hpp>
 #include <hpx/runtime/actions/continuation.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/agas/interface.hpp>
 #include <hpx/runtime/components/component_commandline_base.hpp>
 #include <hpx/runtime/components/component_startup_shutdown_base.hpp>

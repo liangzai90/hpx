@@ -8,8 +8,8 @@
 #define HPX_PROCESS_SERVER_CHILD_MAR_11_2016_0646PM
 
 #include <hpx/config.hpp>
-#include <hpx/runtime/actions/action_support.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
+#include <hpx/actions/action_support.hpp>
 #include <hpx/runtime/components/server/component_base.hpp>
 
 #include <hpx/components/process/export_definitions.hpp>

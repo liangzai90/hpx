@@ -15,7 +15,7 @@
 #include <hpx/async_combinators/wait_each.hpp>
 #include <hpx/runtime.hpp>
 #include <hpx/runtime/actions/continuation.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/testing.hpp>
 #include <hpx/timing.hpp>
 

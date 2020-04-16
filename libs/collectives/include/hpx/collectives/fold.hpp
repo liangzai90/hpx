@@ -159,6 +159,8 @@ namespace hpx { namespace lcos {
 #define HPX_LCOS_FOLD_SEP_29_2013_1442AM
 
 #include <hpx/config.hpp>
+#include <hpx/actions/action_support.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/detail/async_colocated.hpp>
 #include <hpx/async_combinators/when_all.hpp>
@@ -167,10 +169,8 @@ namespace hpx { namespace lcos {
 #include <hpx/preprocessor/cat.hpp>
 #include <hpx/preprocessor/expand.hpp>
 #include <hpx/preprocessor/nargs.hpp>
-#include <hpx/runtime/actions/action_support.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/serialization/vector.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 #include <hpx/type_support/decay.hpp>
 #include <hpx/type_support/pack.hpp>

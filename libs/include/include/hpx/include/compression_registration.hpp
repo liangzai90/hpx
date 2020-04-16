@@ -19,7 +19,8 @@
     please include directly the corresponding header \
     hpx/plugins/binary_filter/<libname>_serialization_filter_registration.hpp instead")
 #else
-#warning "The header hpx/include/compression_registration.hpp is deprecated, \
+#warning                                                                       \
+    "The header hpx/include/compression_registration.hpp is deprecated, \
     please include directly the corresponding header \
     hpx/plugins/binary_filter/<libname>_serialization_filter_registration.hpp instead"
 #endif

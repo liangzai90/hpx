@@ -23,9 +23,9 @@
 #include <hpx/preprocessor/cat.hpp>
 #include <hpx/preprocessor/expand.hpp>
 #include <hpx/preprocessor/nargs.hpp>
-#include <hpx/runtime/actions/basic_action.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/basic_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/components/client_base.hpp>
 #include <hpx/runtime/components/component_factory.hpp>
 #include <hpx/runtime/components/server/locking_hook.hpp>

@@ -12,7 +12,7 @@
 #include <hpx/format.hpp>
 #include <hpx/runtime.hpp>
 #include <hpx/runtime/actions/continuation.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/agas/addressing_service.hpp>
 #include <hpx/runtime/agas/server/primary_namespace.hpp>
 #include <hpx/async/applier/apply.hpp>

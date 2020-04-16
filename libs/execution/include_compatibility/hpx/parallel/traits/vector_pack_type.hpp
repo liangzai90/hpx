@@ -14,7 +14,8 @@
     "The header hpx/parallel/traits/vector_pack_type.hpp is deprecated, \
     please include hpx/execution/parallel/traits/vector_pack_type.hpp instead")
 #else
-#warning "The header hpx/parallel/traits/vector_pack_type.hpp is deprecated, \
+#warning                                                                       \
+    "The header hpx/parallel/traits/vector_pack_type.hpp is deprecated, \
     please include hpx/execution/parallel/traits/vector_pack_type.hpp instead"
 #endif
 #endif

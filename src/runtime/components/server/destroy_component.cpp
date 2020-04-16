@@ -6,7 +6,7 @@
 
 #include <hpx/config.hpp>
 #include <hpx/async.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/agas/interface.hpp>
 #include <hpx/runtime/components/server/destroy_component.hpp>
 #include <hpx/runtime/naming/name.hpp>

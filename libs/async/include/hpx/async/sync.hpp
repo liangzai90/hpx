@@ -8,6 +8,7 @@
 #define HPX_SYNC_JUL_21_2018_0937PM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/detail/sync_implementations.hpp>
 #include <hpx/async/sync.hpp>
@@ -20,7 +21,6 @@
 #include <hpx/runtime/components/client_base.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/is_client.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/traits/is_launch_policy.hpp>

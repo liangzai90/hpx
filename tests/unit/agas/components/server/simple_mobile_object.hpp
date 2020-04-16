@@ -10,7 +10,7 @@
 #define HPX_DB9FD2D1_DFD8_491C_AB4B_1CDBCC56A7D0
 
 #include <hpx/runtime/components/server/simple_component_base.hpp>
-#include <hpx/runtime/actions/component_action.hpp>
+#include <hpx/actions_base/component_action.hpp>
 
 #include <cstdint>
 

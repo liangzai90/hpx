@@ -7,6 +7,7 @@
 #if !defined(HPX_LCOS_SPMD_BLOCK_HPP)
 #define HPX_LCOS_SPMD_BLOCK_HPP
 
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/collectives/barrier.hpp>
 #include <hpx/collectives/broadcast.hpp>
 #include <hpx/concepts/concepts.hpp>
@@ -16,7 +17,6 @@
 #include <hpx/hashing/jenkins_hash.hpp>
 #include <hpx/iterator_support/traits/is_iterator.hpp>
 #include <hpx/lcos/future.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
 #include <hpx/runtime/get_locality_id.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/serialization/serialize.hpp>

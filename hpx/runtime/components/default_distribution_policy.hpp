@@ -14,7 +14,7 @@
 #include <hpx/async/dataflow.hpp>
 #include <hpx/lcos/future.hpp>
 #include <hpx/lcos/packaged_action.hpp>
-#include <hpx/runtime/actions/action_support.hpp>
+#include <hpx/actions/action_support.hpp>
 #include <hpx/async/applier/apply.hpp>
 #include <hpx/runtime/components/stubs/stub_base.hpp>
 #include <hpx/runtime/find_here.hpp>
@@ -24,7 +24,7 @@
 #include <hpx/serialization/serialization_fwd.hpp>
 #include <hpx/serialization/shared_ptr.hpp>
 #include <hpx/serialization/vector.hpp>
-#include <hpx/traits/extract_action.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 

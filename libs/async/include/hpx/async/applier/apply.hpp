@@ -9,12 +9,13 @@
 #define HPX_APPLIER_APPLY_NOV_27_2008_0957AM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/action_priority.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/applier/apply_helper.hpp>
 #include <hpx/async/applier/detail/apply_implementations.hpp>
 #include <hpx/functional/traits/is_action.hpp>
 #include <hpx/local_async/apply.hpp>
-#include <hpx/runtime/actions/action_priority.hpp>
 #include <hpx/runtime/agas/interface.hpp>
 #include <hpx/runtime/components/client_base.hpp>
 #include <hpx/runtime/naming/address.hpp>
@@ -24,7 +25,6 @@
 #include <hpx/runtime/parcelset/put_parcel.hpp>
 #include <hpx/runtime/parcelset_fwd.hpp>
 #include <hpx/traits/component_type_is_compatible.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/is_continuation.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/traits/is_valid_action.hpp>

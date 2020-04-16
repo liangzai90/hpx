@@ -8,13 +8,13 @@
 #define HPX_LCOS_ASYNC_CALLBACK_MAR_30_2015_1119AM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/async/async_callback_fwd.hpp>
 #include <hpx/async/detail/async_implementations_fwd.hpp>
 #include <hpx/functional/traits/is_action.hpp>
 #include <hpx/lcos/future.hpp>
 #include <hpx/runtime/components/client_base.hpp>
 #include <hpx/runtime/launch_policy.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/is_client.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/traits/is_valid_action.hpp>

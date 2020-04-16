@@ -128,6 +128,8 @@ namespace hpx { namespace lcos {
 #define HPX_LCOS_BROADCAST_HPP
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/plain_action.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/applier/detail/apply_colocated.hpp>
 #include <hpx/async/apply.hpp>
@@ -139,10 +141,8 @@ namespace hpx { namespace lcos {
 #include <hpx/preprocessor/cat.hpp>
 #include <hpx/preprocessor/expand.hpp>
 #include <hpx/preprocessor/nargs.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/serialization/vector.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 #include <hpx/type_support/pack.hpp>
 #include <hpx/util/calculate_fanout.hpp>

@@ -12,9 +12,9 @@
 #include <hpx/config.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/lcos_fwd.hpp>
-#include <hpx/runtime/actions/action_priority.hpp>
+#include <hpx/actions_base/action_priority.hpp>
 #include <hpx/runtime/actions/continuation_fwd.hpp>
-#include <hpx/runtime/actions_fwd.hpp>
+#include <hpx/actions/actions_fwd.hpp>
 #include <hpx/async/applier/detail/apply_implementations_fwd.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/runtime/naming/id_type.hpp>

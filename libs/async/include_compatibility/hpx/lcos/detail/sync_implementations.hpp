@@ -14,7 +14,8 @@
     "The header hpx/lcos/detail/sync_implementations.hpp is deprecated, \
     please include hpx/async/detail/sync_implementations.hpp instead")
 #else
-#warning "The header hpx/lcos/detail/sync_implementations.hpp is deprecated, \
+#warning                                                                       \
+    "The header hpx/lcos/detail/sync_implementations.hpp is deprecated, \
     please include hpx/async/detail/sync_implementations.hpp instead"
 #endif
 #endif

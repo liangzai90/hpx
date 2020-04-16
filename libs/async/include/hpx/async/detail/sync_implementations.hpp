@@ -8,16 +8,16 @@
 #define HPX_LCOS_SYNC_IMPLEMENTATIONS_JUL_21_2018_0921PM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/traits/action_select_direct_execution.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/async/detail/async_implementations.hpp>
 #include <hpx/async/detail/sync_implementations_fwd.hpp>
 #include <hpx/async/sync_fwd.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
-#include <hpx/traits/action_select_direct_execution.hpp>
 #include <hpx/traits/action_was_object_migrated.hpp>
 #include <hpx/traits/component_supports_migration.hpp>
-#include <hpx/traits/extract_action.hpp>
 
 #include <cstddef>
 #include <utility>

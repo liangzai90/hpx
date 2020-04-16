@@ -11,7 +11,7 @@
 #include <hpx/async.hpp>
 #include <hpx/errors.hpp>
 #include <hpx/lcos/future.hpp>
-#include <hpx/runtime/actions/plain_action.hpp>
+#include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/find_here.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/runtime_fwd.hpp>

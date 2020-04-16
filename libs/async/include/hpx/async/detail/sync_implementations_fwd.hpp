@@ -8,10 +8,10 @@
 #define HPX_LCOS_SYNC_IMPLEMENTATIONS_FWD_JUL_21_2018_0917PM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/async/sync_fwd.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming_fwd.hpp>
-#include <hpx/traits/extract_action.hpp>
 
 namespace hpx { namespace detail {
     ///////////////////////////////////////////////////////////////////////////

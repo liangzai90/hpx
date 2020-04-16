@@ -7,8 +7,8 @@
 
 #include <hpx/config.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/traits/action_priority.hpp>
-#include <hpx/traits/extract_action.hpp>
+#include <hpx/actions_base/traits/action_priority.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/runtime/trigger_lco.hpp>
 #include <hpx/runtime/actions/continuation.hpp>
 #include <hpx/lcos/base_lco.hpp>

@@ -8,10 +8,10 @@
 #define HPX_LCOS_ASYNC_IMPLEMENTATIONS_FWD_APR_13_2015_0829AM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/async/async_fwd.hpp>
 #include <hpx/lcos/future.hpp>
 #include <hpx/runtime/launch_policy.hpp>
-#include <hpx/traits/extract_action.hpp>
 
 namespace hpx { namespace detail {
     ///////////////////////////////////////////////////////////////////////////

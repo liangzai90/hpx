@@ -9,7 +9,7 @@
 
 #include <hpx/config.hpp>
 #include <hpx/lcos/base_lco_with_value.hpp>
-#include <hpx/runtime/actions/basic_action.hpp>
+#include <hpx/actions_base/basic_action.hpp>
 #include <hpx/runtime/agas/component_namespace.hpp>
 #include <hpx/runtime/agas/server/component_namespace.hpp>
 #include <hpx/async/applier/apply.hpp>

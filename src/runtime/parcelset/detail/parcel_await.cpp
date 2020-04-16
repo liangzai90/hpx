@@ -8,7 +8,7 @@
 
 #if defined(HPX_HAVE_NETWORKING)
 #include <hpx/functional.hpp>
-#include <hpx/runtime/actions_fwd.hpp>
+#include <hpx/actions/actions_fwd.hpp>
 #include <hpx/runtime/parcelset/detail/parcel_await.hpp>
 #include <hpx/runtime/parcelset/parcel.hpp>
 #include <hpx/runtime/parcelset_fwd.hpp>

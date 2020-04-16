@@ -11,6 +11,8 @@ include(HPX_AddPseudoDependencies)
 include(HPX_AddPseudoTarget)
 
 set(HPX_CANDIDATE_LIBS
+  actions
+  actions_base
   affinity
   algorithms
   allocator_support
@@ -78,7 +80,6 @@ set(HPX_CANDIDATE_LIBS
   type_support
   util
   version
-  CACHE INTERNAL "list of HPX modules" FORCE
 )
 
 
@@ -159,20 +160,20 @@ foreach(lib ${HPX_CANDIDATE_LIBS})
 endforeach()
 
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/libs_enabled.hpp.in"
-    "${PROJECT_BINARY_DIR}/libs/config/include/hpx/config/libs_enabled.hpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/libs_enabled.hpp.in"
+  "${PROJECT_BINARY_DIR}/libs/config/include/hpx/config/libs_enabled.hpp"
+  @ONLY)
 
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/modules.cpp.in"
-    "${PROJECT_BINARY_DIR}/libs/modules.cpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/modules.cpp.in"
+  "${PROJECT_BINARY_DIR}/libs/modules.cpp"
+  @ONLY)
 
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
-    "${PROJECT_BINARY_DIR}/hpx/config/config_defines_strings_modules.hpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
+  "${PROJECT_BINARY_DIR}/hpx/config/config_defines_strings_modules.hpp"
+  @ONLY)
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
-    "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/hpx/config/config_defines_strings_modules.hpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
+  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/hpx/config/config_defines_strings_modules.hpp"
+  @ONLY)

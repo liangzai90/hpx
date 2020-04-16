@@ -8,6 +8,8 @@
 #define HPX_LCOS_ASYNC_COLOCATED_FEB_01_2014_0105PM
 
 #include <hpx/config.hpp>
+#include <hpx/actions/action_support.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/async_continue_fwd.hpp>
 #include <hpx/async/async_fwd.hpp>
@@ -16,11 +18,9 @@
 #include <hpx/functional/bind.hpp>
 #include <hpx/functional/unique_function.hpp>
 #include <hpx/lcos/future.hpp>
-#include <hpx/runtime/actions/action_support.hpp>
 #include <hpx/runtime/agas/primary_namespace.hpp>
 #include <hpx/runtime/agas/server/primary_namespace.hpp>
 #include <hpx/runtime/naming/name.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/is_continuation.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 #include <hpx/type_support/pack.hpp>

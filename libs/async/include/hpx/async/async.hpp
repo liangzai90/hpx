@@ -8,6 +8,7 @@
 #define HPX_ASYNC_APR_16_20012_0225PM
 
 #include <hpx/config.hpp>
+#include <hpx/actions_base/traits/extract_action.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/async/async.hpp>
 #include <hpx/async/async_continue.hpp>
@@ -24,7 +25,6 @@
 #include <hpx/runtime/components/client_base.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
-#include <hpx/traits/extract_action.hpp>
 #include <hpx/traits/is_client.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/traits/is_launch_policy.hpp>

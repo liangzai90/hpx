@@ -321,23 +321,23 @@ foreach(lib ${HPX_CANDIDATE_LIBS})
 endforeach()
 
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/libs_enabled.hpp.in"
-    "${PROJECT_BINARY_DIR}/libs/config/include/hpx/config/libs_enabled.hpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/libs_enabled.hpp.in"
+  "${PROJECT_BINARY_DIR}/libs/config/include/hpx/config/libs_enabled.hpp"
+  @ONLY)
 
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/modules.cpp.in"
-    "${PROJECT_BINARY_DIR}/libs/modules.cpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/modules.cpp.in"
+  "${PROJECT_BINARY_DIR}/libs/modules.cpp"
+  @ONLY)
 
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
-    "${PROJECT_BINARY_DIR}/hpx/config/config_defines_strings_modules.hpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
+  "${PROJECT_BINARY_DIR}/hpx/config/config_defines_strings_modules.hpp"
+  @ONLY)
 configure_file(
-    "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
-    "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/hpx/config/config_defines_strings_modules.hpp"
-    @ONLY)
+  "${PROJECT_SOURCE_DIR}/cmake/templates/config_defines_strings_modules.hpp.in"
+  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/hpx/config/config_defines_strings_modules.hpp"
+  @ONLY)
 '''
 
 f = open(os.path.join(cwd, 'CMakeLists.txt'), 'w')
