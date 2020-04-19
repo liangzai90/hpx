@@ -9,7 +9,7 @@
 #define HPX_LCOS_FWD_HPP
 
 #include <hpx/config.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/traits/promise_local_result.hpp>
 #include <hpx/traits/promise_remote_result.hpp>
 

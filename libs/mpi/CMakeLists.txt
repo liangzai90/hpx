@@ -54,6 +54,7 @@ add_hpx_module(mpi
   DEPENDENCIES
     hpx_assertion
     hpx_basic_execution
+    hpx_components_base
     hpx_concurrency
     hpx_config
     hpx_errors

@@ -51,6 +51,8 @@ add_hpx_module(actions_base
   HEADERS ${actions_base_headers}
   COMPAT_HEADERS ${actions_base_compat_headers}
   DEPENDENCIES
+    hpx_async_base
+    hpx_components_base
     hpx_concurrency
     hpx_config
     hpx_coroutines

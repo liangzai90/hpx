@@ -18,7 +18,7 @@
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/traits/is_client.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/type_support/lazy_enable_if.hpp>
 

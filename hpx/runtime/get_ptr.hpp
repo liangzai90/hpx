@@ -14,13 +14,13 @@
 #include <hpx/runtime/agas/gva.hpp>
 #include <hpx/runtime/components/client_base.hpp>
 #include <hpx/runtime/components/component_type.hpp>
-#include <hpx/runtime/get_lva.hpp>
+#include <hpx/components_base/get_lva.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/runtime_fwd.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/traits/component_pin_support.hpp>
+#include <hpx/components_base/traits/component_pin_support.hpp>
 #include <hpx/traits/component_type_is_compatible.hpp>
 #include <hpx/functional/bind_back.hpp>
 

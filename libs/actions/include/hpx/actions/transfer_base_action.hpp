@@ -20,9 +20,9 @@
 #include <hpx/actions_base/traits/action_priority.hpp>
 #include <hpx/actions_base/traits/action_stacksize.hpp>
 #include <hpx/assertion.hpp>
+#include <hpx/components_base/pinned_ptr.hpp>
 #include <hpx/datastructures/tuple.hpp>
 #include <hpx/runtime/actions/detail/invocation_count_registry.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
 #include <hpx/serialization/input_archive.hpp>
 #include <hpx/serialization/output_archive.hpp>
 #include <hpx/serialization/unique_ptr.hpp>

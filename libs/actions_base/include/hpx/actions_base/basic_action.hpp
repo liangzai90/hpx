@@ -18,6 +18,7 @@
 #include <hpx/actions_base/traits/action_priority.hpp>
 #include <hpx/actions_base/traits/action_remote_result.hpp>
 #include <hpx/actions_base/traits/action_stacksize.hpp>
+#include <hpx/async_base/sync.hpp>
 #include <hpx/coroutines/thread_enums.hpp>
 #include <hpx/datastructures/tuple.hpp>
 #include <hpx/errors.hpp>
@@ -32,8 +33,6 @@
 #include <hpx/runtime/actions/detail/action_factory.hpp>
 #include <hpx/runtime/actions/detail/invocation_count_registry.hpp>
 #include <hpx/runtime/actions/preassigned_action_id.hpp>
-#include <hpx/runtime/actions/transfer_action.hpp>
-#include <hpx/runtime/actions/transfer_continuation_action.hpp>
 #include <hpx/runtime/launch_policy.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
@@ -46,10 +45,6 @@
 #include <hpx/util/get_and_reset_value.hpp>
 #if HPX_HAVE_ITTNOTIFY != 0 && !defined(HPX_HAVE_APEX)
 #include <hpx/concurrency/itt_notify.hpp>
-#endif
-#if defined(HPX_HAVE_NETWORKING)
-#include <hpx/runtime/actions/transfer_action.hpp>
-#include <hpx/runtime/actions/transfer_continuation_action.hpp>
 #endif
 
 #include <boost/utility/string_ref.hpp>

@@ -18,7 +18,7 @@
 #include <hpx/runtime/components/server/migrate_component.hpp>
 #include <hpx/runtime/components/target_distribution_policy.hpp>
 #include <hpx/runtime/naming/name.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 
 #include <type_traits>

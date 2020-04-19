@@ -12,7 +12,7 @@
 #include <hpx/config.hpp>
 #include <hpx/lcos/future.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 
 #include <hpx/components/component_storage/server/migrate_from_storage.hpp>
 

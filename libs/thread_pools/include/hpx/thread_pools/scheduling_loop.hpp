@@ -39,6 +39,7 @@ namespace hpx { namespace threads { namespace detail {
     inline void write_new_state_log_debug(std::size_t num_thread,
         thread_data* thrd, thread_state_enum state, char const* info)
     {
+        // NOLINTNEXTLINE(bugprone-branch-clone)
         LTM_(debug) << "tfunc(" << num_thread << "): "    //-V128
                     << "thread(" << thrd->get_thread_id() << "), "
                     << "description(" << thrd->get_description() << "), "
@@ -49,6 +50,7 @@ namespace hpx { namespace threads { namespace detail {
         thread_data* thrd, thread_state_enum state, char const* info)
     {
         // log this in any case
+        // NOLINTNEXTLINE(bugprone-branch-clone)
         LTM_(warning) << "tfunc(" << num_thread << "): "    //-V128
                       << "thread(" << thrd->get_thread_id() << "), "
                       << "description(" << thrd->get_description() << "), "
@@ -58,6 +60,7 @@ namespace hpx { namespace threads { namespace detail {
     inline void write_old_state_log(
         std::size_t num_thread, thread_data* thrd, thread_state_enum state)
     {
+        // NOLINTNEXTLINE(bugprone-branch-clone)
         LTM_(debug) << "tfunc(" << num_thread << "): "    //-V128
                     << "thread(" << thrd->get_thread_id() << "), "
                     << "description(" << thrd->get_description() << "), "
@@ -818,6 +821,7 @@ namespace hpx { namespace threads { namespace detail {
                 }
                 else if (HPX_UNLIKELY(active == state_val))
                 {
+                    // NOLINTNEXTLINE(bugprone-branch-clone)
                     LTM_(warning) << "tfunc(" << num_thread
                                   << "): "    //-V128
                                      "thread("

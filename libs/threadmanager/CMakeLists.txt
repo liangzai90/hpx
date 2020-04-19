@@ -33,6 +33,7 @@ add_hpx_module(threadmanager
     hpx_allocator_support
     hpx_assertion
     hpx_command_line_handling
+    hpx_components_base
     hpx_concurrency
     hpx_coroutines
     hpx_errors

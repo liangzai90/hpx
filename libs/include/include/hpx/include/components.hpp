@@ -45,10 +45,10 @@
 #include <hpx/runtime/components/server/locking_hook.hpp>
 #include <hpx/runtime/components/server/migration_support.hpp>
 
+#include <hpx/components_base/pinned_ptr.hpp>
 #include <hpx/runtime/components/copy_component.hpp>
 #include <hpx/runtime/components/migrate_component.hpp>
 #include <hpx/runtime/components/new.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
 
 #include <hpx/runtime/components/binpacking_distribution_policy.hpp>
 #include <hpx/runtime/components/colocating_distribution_policy.hpp>

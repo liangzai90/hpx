@@ -18,7 +18,7 @@
 #include <hpx/runtime/components/server/wrapper_heap_list.hpp>
 #include <hpx/runtime/components_fwd.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/traits/managed_component_policies.hpp>
 #include <hpx/functional/unique_function.hpp>
 

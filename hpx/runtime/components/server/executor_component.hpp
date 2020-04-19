@@ -8,7 +8,7 @@
 #define HPX_RUNTIME_COMPONENTS_SERVER_EXECUTOR_COMPONENT_FEB_09_2017_0839PM
 
 #include <hpx/config.hpp>
-#include <hpx/runtime/get_lva.hpp>
+#include <hpx/components_base/get_lva.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/coroutines/thread_enums.hpp>
 #include <hpx/threading_base/thread_init_data.hpp>

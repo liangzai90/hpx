@@ -38,6 +38,7 @@ add_hpx_module(command_line_handling
     hpx_affinity
     hpx_basic_execution
     hpx_batch_environments
+    hpx_components_base
     hpx_concurrency
     hpx_config
     hpx_datastructures

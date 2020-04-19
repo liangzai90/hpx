@@ -46,6 +46,7 @@ namespace hpx {
 
         thread() noexcept;
 
+        // NOLINTNEXTLINE(bugprone-forwarding-reference-overload)
         template <typename F,
             typename Enable = typename std::enable_if<!std::is_same<
                 typename hpx::util::decay<F>::type, thread>::value>::type>

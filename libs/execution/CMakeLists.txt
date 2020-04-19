@@ -139,6 +139,7 @@ add_hpx_module(execution
     hpx_async_base
     hpx_async_combinators
     hpx_allocator_support
+    hpx_components_base
     hpx_concepts
     hpx_config
     hpx_datastructures

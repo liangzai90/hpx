@@ -16,7 +16,7 @@
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/runtime_fwd.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/functional/unique_function.hpp>
 
 #include <cstddef>

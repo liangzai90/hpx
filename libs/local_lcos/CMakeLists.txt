@@ -52,6 +52,7 @@ add_hpx_module(local_lcos
     hpx_basic_execution
     hpx_allocator_support
     hpx_assertion
+    hpx_components_base
     hpx_errors
     hpx_functional
     hpx_iterator_support

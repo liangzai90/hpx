@@ -12,6 +12,8 @@
 #include <hpx/actions_base/traits/action_select_direct_execution.hpp>
 #include <hpx/actions_base/traits/action_stacksize.hpp>
 #include <hpx/actions_base/traits/extract_action.hpp>
+#include <hpx/components_base/traits/component_pin_support.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/concepts/concepts.hpp>
 #include <hpx/concepts/has_member_xxx.hpp>
 #include <hpx/concepts/has_xxx.hpp>
@@ -46,7 +48,6 @@
 #include <hpx/traits/action_was_object_migrated.hpp>
 #include <hpx/traits/component_config_data.hpp>
 #include <hpx/traits/component_heap_type.hpp>
-#include <hpx/traits/component_pin_support.hpp>
 #include <hpx/traits/component_supports_migration.hpp>
 #include <hpx/traits/component_type_database.hpp>
 #include <hpx/traits/component_type_is_compatible.hpp>
@@ -54,7 +55,6 @@
 #include <hpx/traits/future_traits.hpp>
 #include <hpx/traits/get_remote_result.hpp>
 #include <hpx/traits/is_client.hpp>
-#include <hpx/traits/is_component.hpp>
 #include <hpx/traits/is_continuation.hpp>
 #include <hpx/traits/is_distribution_policy.hpp>
 #include <hpx/traits/is_future.hpp>

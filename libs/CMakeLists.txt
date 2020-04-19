@@ -27,6 +27,7 @@ set(HPX_CANDIDATE_LIBS
   checkpoint
   collectives
   command_line_handling
+  components_base
   compute
   compute_cuda
   concepts

@@ -12,7 +12,7 @@
 #include <hpx/actions_base/component_action.hpp>
 #include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/components/component_type.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/util/integer/uint128.hpp>
 
 #include <cstddef>

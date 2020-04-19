@@ -10,12 +10,11 @@
 
 #if defined(HPX_ACTIONS_HAVE_DEPRECATION_WARNINGS)
 #if defined(HPX_MSVC)
-#pragma message( \
+#pragma message(                                                               \
     "The header hpx/runtime/actions/base_action.hpp is deprecated, \
     please include hpx/actions/base_action.hpp instead")
 #else
-#warning \
-    "The header hpx/runtime/actions/base_action.hpp is deprecated, \
+#warning "The header hpx/runtime/actions/base_action.hpp is deprecated, \
     please include hpx/actions/base_action.hpp instead"
 #endif
 #endif

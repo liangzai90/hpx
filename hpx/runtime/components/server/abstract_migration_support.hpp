@@ -9,7 +9,7 @@
 
 #include <hpx/config.hpp>
 #include <hpx/lcos/future.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
+#include <hpx/components_base/pinned_ptr.hpp>
 #include <hpx/runtime/components/server/migration_support.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/runtime/threads_fwd.hpp>

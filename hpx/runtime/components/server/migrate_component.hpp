@@ -14,7 +14,7 @@
 #include <hpx/runtime/get_ptr.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/traits/component_supports_migration.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 
 #include <cstdint>
 #include <memory>

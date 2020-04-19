@@ -1,4 +1,4 @@
-//  Copyright (c) 2016 Hartmut Kaiser
+//  Copyright (c) 2016-2020 Hartmut Kaiser
 //
 //  SPDX-License-Identifier: BSL-1.0
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -9,19 +9,19 @@
 
 #include <hpx/config.hpp>
 #include <hpx/assertion.hpp>
+#include <hpx/components_base/get_lva.hpp>
+#include <hpx/components_base/traits/component_pin_support.hpp>
 #include <hpx/naming_base.hpp>
-#include <hpx/runtime/get_lva.hpp>
 #include <hpx/traits/action_decorate_function.hpp>
-#include <hpx/traits/component_pin_support.hpp>
 
 #include <memory>
 #include <type_traits>
 #include <utility>
 
-namespace hpx { namespace components
-{
-    namespace detail
-    {
+namespace hpx { namespace components {
+
+    ///////////////////////////////////////////////////////////////////////////
+    namespace detail {
         class pinned_ptr_base
         {
         public:
@@ -30,11 +30,13 @@ namespace hpx { namespace components
         public:
             pinned_ptr_base() noexcept
               : lva_(0)
-            {}
+            {
+            }
 
             explicit pinned_ptr_base(naming::address_type lva) noexcept
               : lva_(lva)
-            {}
+            {
+            }
 
             virtual ~pinned_ptr_base() {}
 
@@ -83,13 +85,16 @@ namespace hpx { namespace components
                 this->lva_ = 0;
             }
         };
-    }
+    }    // namespace detail
 
     ///////////////////////////////////////////////////////////////////////////
     class pinned_ptr
     {
     private:
-        template <typename T> struct id {};
+        template <typename T>
+        struct id
+        {
+        };
 
         // created pinned_ptr does not pin object it refers to
         template <typename Component, typename Enable = void>
@@ -105,8 +110,7 @@ namespace hpx { namespace components
         template <typename Component>
         struct create_helper<Component,
             typename std::enable_if<
-                traits::component_decorates_action<Component>::value
-            >::type>
+                traits::component_decorates_action<Component>::value>::type>
         {
             static pinned_ptr call(naming::address_type lva)
             {
@@ -124,10 +128,10 @@ namespace hpx { namespace components
         pinned_ptr() = default;
 
         pinned_ptr(pinned_ptr const& rhs) = delete;
-        pinned_ptr(pinned_ptr && rhs) = default;
+        pinned_ptr(pinned_ptr&& rhs) = default;
 
-        pinned_ptr& operator= (pinned_ptr const& rhs) = delete;
-        pinned_ptr& operator= (pinned_ptr && rhs) = default;
+        pinned_ptr& operator=(pinned_ptr const& rhs) = delete;
+        pinned_ptr& operator=(pinned_ptr&& rhs) = default;
 
         template <typename Component>
         static pinned_ptr create(naming::address_type lva)
@@ -139,7 +143,6 @@ namespace hpx { namespace components
     private:
         std::unique_ptr<detail::pinned_ptr_base> data_;
     };
-}}
+}}    // namespace hpx::components
 
 #endif
-

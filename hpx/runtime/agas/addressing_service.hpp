@@ -22,7 +22,7 @@
 #include <hpx/runtime/agas/locality_namespace.hpp>
 #include <hpx/runtime/agas/symbol_namespace.hpp>
 #include <hpx/runtime/agas/primary_namespace.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
+#include <hpx/components_base/pinned_ptr.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/runtime/parcelset_fwd.hpp>

@@ -30,6 +30,7 @@ All modules
    /libs/checkpoint/docs/index.rst
    /libs/collectives/docs/index.rst
    /libs/command_line_handling/docs/index.rst
+   /libs/components_base/docs/index.rst
    /libs/compute/docs/index.rst
    /libs/compute_cuda/docs/index.rst
    /libs/concepts/docs/index.rst

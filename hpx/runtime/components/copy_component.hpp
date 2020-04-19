@@ -16,7 +16,7 @@
 #include <hpx/actions_base/plain_action.hpp>
 #include <hpx/runtime/components/server/copy_component.hpp>
 #include <hpx/runtime/naming/name.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 
 #include <type_traits>
 

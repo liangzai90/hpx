@@ -24,7 +24,7 @@
 #include <hpx/runtime/components_fwd.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/traits/is_component.hpp>
+#include <hpx/components_base/traits/is_component.hpp>
 #include <hpx/runtime_configuration/ini.hpp>
 #include <hpx/type_support/unused.hpp>
 #include <hpx/type_support/void_guard.hpp>

@@ -11,7 +11,7 @@
 #include <hpx/basic_execution/register_locks.hpp>
 #include <hpx/functional/bind_front.hpp>
 #include <hpx/synchronization/spinlock.hpp>
-#include <hpx/runtime/get_lva.hpp>
+#include <hpx/components_base/get_lva.hpp>
 #include <hpx/coroutines/coroutine.hpp>
 #include <hpx/thread_support/unlock_guard.hpp>
 #include <hpx/threading_base/thread_data.hpp>

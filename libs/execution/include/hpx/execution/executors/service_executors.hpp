@@ -238,6 +238,7 @@ namespace hpx { namespace parallel { namespace execution {
                 return get_thread_pool("parcel-pool", suffix);
             }
 
+            // NOLINTNEXTLINE(bugprone-branch-clone)
             case service_executor_type::timer_thread_pool:
                 return get_thread_pool("timer-pool");
 

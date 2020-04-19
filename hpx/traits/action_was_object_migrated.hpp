@@ -8,7 +8,7 @@
 #define HPX_TRAITS_ACTION_WAS_OBJECT_MIGRATED_JAN_22_2016_1115AM
 
 #include <hpx/config.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
+#include <hpx/components_base/pinned_ptr.hpp>
 #include <hpx/runtime/naming_fwd.hpp>
 #include <hpx/type_support/detail/wrap_int.hpp>
 

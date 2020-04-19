@@ -25,6 +25,8 @@
 
 #include <hpx/config/warnings_prefix.hpp>
 
+#include <cstdint>
+
 /// \cond NOINTERNAL
 namespace hpx { namespace traits { namespace detail {
     ///////////////////////////////////////////////////////////////////////

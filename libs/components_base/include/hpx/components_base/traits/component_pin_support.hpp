@@ -8,16 +8,15 @@
 #define HPX_TRAITS_COMPONENT_PIN_SUPPORT_MAY_21_2018_1246PM
 
 #include <hpx/config.hpp>
-#include <hpx/type_support/detail/wrap_int.hpp>
+#include <hpx/type_support.hpp>
 
 #include <cstdint>
 
-namespace hpx { namespace traits
-{
+namespace hpx { namespace traits {
+
     ///////////////////////////////////////////////////////////////////////////
     // Customization point for component pinning
-    namespace detail
-    {
+    namespace detail {
         struct pin_helper
         {
             template <typename Component>
@@ -27,8 +26,7 @@ namespace hpx { namespace traits
 
             // forward the call if the component implements the function
             template <typename Component>
-            static constexpr auto call(int, Component* p)
-            ->  decltype(p->pin())
+            static constexpr auto call(int, Component* p) -> decltype(p->pin())
             {
                 p->pin();
             }
@@ -45,7 +43,7 @@ namespace hpx { namespace traits
             // forward the call if the component implements the function
             template <typename Component>
             static constexpr auto call(int, Component* p)
-            ->  decltype(p->unpin())
+                -> decltype(p->unpin())
             {
                 return p->unpin();
             }
@@ -62,12 +60,12 @@ namespace hpx { namespace traits
             // forward the call if the component implements the function
             template <typename Component>
             static constexpr auto call(int, Component* p)
-            ->  decltype(p->pin_count())
+                -> decltype(p->pin_count())
             {
                 return p->pin_count();
             }
         };
-    }
+    }    // namespace detail
 
     template <typename Component, typename Enable = void>
     struct component_pin_support
@@ -87,7 +85,6 @@ namespace hpx { namespace traits
             return detail::pin_count_helper::call(0, p);
         }
     };
-}}
+}}    // namespace hpx::traits
 
 #endif
-

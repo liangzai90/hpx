@@ -11,10 +11,10 @@
 
 #include <hpx/config.hpp>
 #include <hpx/actions_base/basic_action.hpp>
+#include <hpx/components_base.hpp>
 #include <hpx/preprocessor/cat.hpp>
 #include <hpx/preprocessor/expand.hpp>
 #include <hpx/preprocessor/nargs.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/traits/future_access.hpp>
 #include <hpx/traits/is_client.hpp>

@@ -13,7 +13,7 @@
 #include <hpx/runtime/naming/address.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/errors.hpp>
-#include <hpx/traits/component_pin_support.hpp>
+#include <hpx/components_base/traits/component_pin_support.hpp>
 #include <hpx/traits/component_supports_migration.hpp>
 #include <hpx/functional/bind_back.hpp>
 

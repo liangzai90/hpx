@@ -18,11 +18,12 @@
 #include <hpx/runtime/parcelset_fwd.hpp>
 
 #include <hpx/actions/action_support.hpp>
-#include <hpx/actions_base/basic_action.hpp>
+#include <hpx/actions_base.hpp>
+#include <hpx/components_base/pinned_ptr.hpp>
 #include <hpx/coroutines/thread_enums.hpp>
 #include <hpx/coroutines/thread_id_type.hpp>
+#include <hpx/preprocessor/stringize.hpp>
 #include <hpx/runtime/actions/detail/action_factory.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
 #include <hpx/runtime/naming/name.hpp>
 #include <hpx/serialization/traits/polymorphic_traits.hpp>
 #include <hpx/serialization/tuple.hpp>
@@ -34,6 +35,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <memory>
+#include <type_traits>
 #include <utility>
 
 #include <hpx/config/warnings_prefix.hpp>

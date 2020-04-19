@@ -13,7 +13,7 @@
 #include <hpx/local_lcos/promise.hpp>
 #include <hpx/synchronization/spinlock.hpp>
 #include <hpx/runtime/agas/interface.hpp>
-#include <hpx/runtime/components/pinned_ptr.hpp>
+#include <hpx/components_base/pinned_ptr.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/runtime/threads_fwd.hpp>
 #include <hpx/traits/action_decorate_function.hpp>
