@@ -13,6 +13,7 @@ set(actions_headers
   hpx/actions/actions_fwd.hpp
   hpx/actions/action_support.hpp
   hpx/actions/base_action.hpp
+  hpx/actions/transfer_base_action.hpp
 )
 
 # Default location is $HPX_ROOT/libs/actions/include_compatibility
@@ -20,6 +21,7 @@ set(actions_compat_headers
   hpx/runtime/actions_fwd.hpp
   hpx/runtime/actions/action_support.hpp
   hpx/runtime/actions/base_action.hpp
+  hpx/runtime/actions/transfer_base_action.hpp
 )
 
 set(actions_sources)
@@ -35,9 +37,11 @@ add_hpx_module(actions
   COMPAT_HEADERS ${actions_compat_headers}
   DEPENDENCIES
     hpx_actions_base
+    hpx_assertion
     hpx_config
     hpx_concurrency
     hpx_coroutines
+    hpx_datastructures
     hpx_debugging
     hpx_serialization
   CMAKE_SUBDIRS examples tests

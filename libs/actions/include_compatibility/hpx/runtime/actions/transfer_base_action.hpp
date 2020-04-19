@@ -6,16 +6,16 @@
 
 #include <hpx/config.hpp>
 #include <hpx/actions/config/defines.hpp>
-#include <hpx/actions/hpx/runtime/actions_fwd.hpp>
+#include <hpx/actions/transfer_base_action.hpp>
 
 #if defined(HPX_ACTIONS_HAVE_DEPRECATION_WARNINGS)
 #if defined(HPX_MSVC)
 #pragma message( \
-    "The header hpx/runtime/actions/actions_fwd.hpp is deprecated, \
-    please include hpx/actions/actions_fwd.hpp instead")
+    "The header hpx/runtime/actions/transfer_base_action.hpp is deprecated, \
+    please include hpx/actions/transfer_base_action.hpp instead")
 #else
 #warning \
-    "The header hpx/runtime/actions/actions_fwd.hpp is deprecated, \
-    please include hpx/actions/actions_fwd.hpp instead"
+    "The header hpx/runtime/actions/transfer_base_action.hpp is deprecated, \
+    please include hpx/actions/transfer_base_action.hpp instead"
 #endif
 #endif

@@ -1,4 +1,4 @@
-//  Copyright (c) 2019 Ste||ar Group
+//  Copyright (c) 2019-2020 Ste||ar Group
 //
 //  SPDX-License-Identifier: BSL-1.0
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -10,11 +10,12 @@
 
 #if defined(HPX_ACTIONS_HAVE_DEPRECATION_WARNINGS)
 #if defined(HPX_MSVC)
-#pragma message(                                                               \
+#pragma message( \
     "The header hpx/runtime/actions/base_action.hpp is deprecated, \
     please include hpx/actions/base_action.hpp instead")
 #else
-#warning "The header hpx/runtime/actions/base_action.hpp is deprecated, \
+#warning \
+    "The header hpx/runtime/actions/base_action.hpp is deprecated, \
     please include hpx/actions/base_action.hpp instead"
 #endif
 #endif

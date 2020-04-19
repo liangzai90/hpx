@@ -14,11 +14,13 @@
 #include <hpx/config/defines.hpp>
 
 #if defined(HPX_HAVE_NETWORKING)
-#include <hpx/runtime/actions_fwd.hpp>
-
+#include <hpx/actions/action_support.hpp>
+#include <hpx/actions/actions_fwd.hpp>
+#include <hpx/actions/base_action.hpp>
+#include <hpx/actions_base/traits/action_priority.hpp>
+#include <hpx/actions_base/traits/action_stacksize.hpp>
 #include <hpx/assertion.hpp>
-#include <hpx/runtime/actions/action_support.hpp>
-#include <hpx/runtime/actions/base_action.hpp>
+#include <hpx/datastructures/tuple.hpp>
 #include <hpx/runtime/actions/detail/invocation_count_registry.hpp>
 #include <hpx/runtime/components/pinned_ptr.hpp>
 #include <hpx/serialization/input_archive.hpp>
@@ -26,14 +28,11 @@
 #include <hpx/serialization/unique_ptr.hpp>
 #include <hpx/traits/action_does_termination_detection.hpp>
 #include <hpx/traits/action_message_handler.hpp>
-#include <hpx/traits/action_priority.hpp>
 #include <hpx/traits/action_schedule_thread.hpp>
 #include <hpx/traits/action_serialization_filter.hpp>
-#include <hpx/traits/action_stacksize.hpp>
 #include <hpx/traits/action_was_object_migrated.hpp>
 #include <hpx/util/get_and_reset_value.hpp>
 #include <hpx/util/serialize_exception.hpp>
-#include <hpx/datastructures/tuple.hpp>
 #if HPX_HAVE_ITTNOTIFY != 0 && !defined(HPX_HAVE_APEX)
 #include <hpx/concurrency/itt_notify.hpp>
 #endif
@@ -45,50 +44,48 @@
 #include <type_traits>
 #include <utility>
 
-namespace hpx { namespace actions
-{
+namespace hpx { namespace actions {
     ///////////////////////////////////////////////////////////////////////////
     // If one or more arguments of the action are non-default-constructible,
     // the transfer_action does not store the argument tuple directly but a
     // unique_ptr to the tuple instead.
-    namespace detail
-    {
+    namespace detail {
         template <typename Args>
         struct argument_holder
         {
             argument_holder() = default;
 
-            explicit argument_holder(Args && args)
+            explicit argument_holder(Args&& args)
               : data_(new Args(std::move(args)))
-            {}
+            {
+            }
 
-            template <typename ... Ts>
-            argument_holder(Ts && ... ts)
+            template <typename... Ts>
+            argument_holder(Ts&&... ts)
               : data_(new Args(std::forward<Ts>(ts)...))
-            {}
+            {
+            }
 
             template <typename Archive>
             void serialize(Archive& ar, unsigned int const)
             {
-                ar & data_;
+                ar& data_;
             }
 
-            HPX_HOST_DEVICE HPX_FORCEINLINE
-            Args& data()
+            HPX_HOST_DEVICE HPX_FORCEINLINE Args& data()
             {
                 HPX_ASSERT(!!data_);
                 return *data_;
             }
 
-#if defined(HPX_DISABLE_ASSERTS) || defined(BOOST_DISABLE_ASSERTS) || defined(NDEBUG)
-            constexpr HPX_HOST_DEVICE HPX_FORCEINLINE
-            Args const& data() const
+#if defined(HPX_DISABLE_ASSERTS) || defined(BOOST_DISABLE_ASSERTS) ||          \
+    defined(NDEBUG)
+            constexpr HPX_HOST_DEVICE HPX_FORCEINLINE Args const& data() const
             {
                 return *data_;
             }
 #else
-            HPX_HOST_DEVICE HPX_FORCEINLINE
-            Args const& data() const
+            HPX_HOST_DEVICE HPX_FORCEINLINE Args const& data() const
             {
                 HPX_ASSERT(!!data_);
                 return *data_;
@@ -98,31 +95,30 @@ namespace hpx { namespace actions
         private:
             std::unique_ptr<Args> data_;
         };
-    }
-}}
+    }    // namespace detail
+}}       // namespace hpx::actions
 
-namespace hpx { namespace util
-{
+namespace hpx { namespace util {
     template <std::size_t I, typename Args>
     constexpr HPX_HOST_DEVICE HPX_FORCEINLINE
-    typename util::tuple_element<I, Args>::type&
-    get(hpx::actions::detail::argument_holder<Args>& t)
+        typename util::tuple_element<I, Args>::type&
+        get(hpx::actions::detail::argument_holder<Args>& t)
     {
         return util::tuple_element<I, Args>::get(t.data());
     }
 
     template <std::size_t I, typename Args>
     constexpr HPX_HOST_DEVICE HPX_FORCEINLINE
-    typename util::tuple_element<I, Args>::type const&
-    get(hpx::actions::detail::argument_holder<Args> const& t)
+        typename util::tuple_element<I, Args>::type const&
+        get(hpx::actions::detail::argument_holder<Args> const& t)
     {
         return util::tuple_element<I, Args>::get(t.data());
     }
 
     template <std::size_t I, typename Args>
     constexpr HPX_HOST_DEVICE HPX_FORCEINLINE
-    typename util::tuple_element<I, Args>::type&&
-    get(hpx::actions::detail::argument_holder<Args>&& t)
+        typename util::tuple_element<I, Args>::type&&
+        get(hpx::actions::detail::argument_holder<Args>&& t)
     {
         return std::forward<typename util::tuple_element<I, Args>::type>(
             util::get<I>(t.data()));
@@ -130,17 +126,15 @@ namespace hpx { namespace util
 
     template <std::size_t I, typename Args>
     constexpr HPX_HOST_DEVICE HPX_FORCEINLINE
-    typename util::tuple_element<I, Args>::type const&&
-    get(hpx::actions::detail::argument_holder<Args> const&& t)
+        typename util::tuple_element<I, Args>::type const&&
+        get(hpx::actions::detail::argument_holder<Args> const&& t)
     {
-        return std::forward<
-                typename util::tuple_element<I, Args>::type const
-            >(util::get<I>(t.data()));
+        return std::forward<typename util::tuple_element<I, Args>::type const>(
+            util::get<I>(t.data()));
     }
-}}
+}}    // namespace hpx::util
 
-namespace hpx { namespace actions
-{
+namespace hpx { namespace actions {
     ///////////////////////////////////////////////////////////////////////////
     template <typename Action>
     struct transfer_base_action : base_action_data
@@ -154,10 +148,9 @@ namespace hpx { namespace actions
         typedef typename Action::result_type result_type;
         typedef typename Action::arguments_type arguments_base_type;
         typedef typename std::conditional<
-                std::is_constructible<arguments_base_type>::value,
-                    arguments_base_type,
-                    detail::argument_holder<arguments_base_type>
-            >::type arguments_type;
+            std::is_constructible<arguments_base_type>::value,
+            arguments_base_type,
+            detail::argument_holder<arguments_base_type>>::type arguments_type;
         typedef typename Action::continuation_type continuation_type;
 
         // This is the priority value this action has been instantiated with
@@ -186,9 +179,10 @@ namespace hpx { namespace actions
                 detail::thread_stacksize<static_cast<threads::thread_stacksize>(
                     stacksize_value)>::call(threads::thread_stacksize_default))
           , arguments_(std::forward<Ts>(vs)...)
-        {}
+        {
+        }
 
-        template <typename ...Ts>
+        template <typename... Ts>
         transfer_base_action(threads::thread_priority priority, Ts&&... vs)
           : base_action_data(
                 detail::thread_priority<static_cast<threads::thread_priority>(
@@ -196,7 +190,8 @@ namespace hpx { namespace actions
                 detail::thread_stacksize<static_cast<threads::thread_stacksize>(
                     stacksize_value)>::call(threads::thread_stacksize_default))
           , arguments_(std::forward<Ts>(vs)...)
-        {}
+        {
+        }
 
         //
         ~transfer_base_action() noexcept override
@@ -252,15 +247,17 @@ namespace hpx { namespace actions
         /// Return whether the embedded action is part of termination detection
         bool does_termination_detection() const override
         {
-            return traits::action_does_termination_detection<derived_type>::call();
+            return traits::action_does_termination_detection<
+                derived_type>::call();
         }
 
         /// Return whether the given object was migrated
-        std::pair<bool, components::pinned_ptr>
-            was_object_migrated(hpx::naming::gid_type const& id,
-                naming::address::address_type lva) override
+        std::pair<bool, components::pinned_ptr> was_object_migrated(
+            hpx::naming::gid_type const& id,
+            naming::address::address_type lva) override
         {
-            return traits::action_was_object_migrated<derived_type>::call(id, lva);
+            return traits::action_was_object_migrated<derived_type>::call(
+                id, lva);
         }
 
         /// Return a pointer to the filter to be used while serializing an
@@ -276,16 +273,16 @@ namespace hpx { namespace actions
             parcelset::parcelhandler* ph, parcelset::locality const& loc,
             parcelset::parcel const& p) const override
         {
-            return traits::action_message_handler<derived_type>::
-                call(ph, loc, p);
+            return traits::action_message_handler<derived_type>::call(
+                ph, loc, p);
         }
 
     public:
         /// retrieve the N's argument
         template <std::size_t N>
         constexpr inline
-        typename util::tuple_element<N, arguments_type>::type const&
-        get() const
+            typename util::tuple_element<N, arguments_type>::type const&
+            get() const
         {
             return util::get<N>(arguments_);
         }
@@ -298,14 +295,14 @@ namespace hpx { namespace actions
 
         // serialization support
         // loading ...
-        void load_base(hpx::serialization::input_archive & ar)
+        void load_base(hpx::serialization::input_archive& ar)
         {
             ar >> arguments_;
             this->base_action_data::load_base(ar);
         }
 
         // saving ...
-        void save_base(hpx::serialization::output_archive & ar)
+        void save_base(hpx::serialization::output_archive& ar)
         {
             ar << arguments_;
             this->base_action_data::save_base(ar);
@@ -325,49 +322,45 @@ namespace hpx { namespace actions
     };
 
     template <typename Action>
-    std::atomic<std::int64_t>
-        transfer_base_action<Action>::invocation_count_(0);
+    std::atomic<std::int64_t> transfer_base_action<Action>::invocation_count_(
+        0);
 
-    namespace detail
-    {
+    namespace detail {
         template <typename Action>
         void register_remote_action_invocation_count(
             invocation_count_registry& registry)
         {
             registry.register_class(
                 hpx::actions::detail::get_action_name<Action>(),
-                &transfer_base_action<Action>::get_invocation_count
-            );
+                &transfer_base_action<Action>::get_invocation_count);
         }
-    }
+    }    // namespace detail
 
     ///////////////////////////////////////////////////////////////////////////
     template <std::size_t N, typename Action>
-    constexpr inline typename util::tuple_element<
-        N, typename transfer_action<Action>::arguments_type
-    >::type const& get(transfer_base_action<Action> const& args)
+    constexpr inline typename util::tuple_element<N,
+        typename transfer_action<Action>::arguments_type>::type const&
+    get(transfer_base_action<Action> const& args)
     {
         return args.template get<N>();
     }
-}}
+}}    // namespace hpx::actions
 
 #if defined(HPX_HAVE_PARCELPORT_ACTION_COUNTERS)
 #include <hpx/runtime/parcelset/detail/per_action_data_counter_registry.hpp>
 
-namespace hpx { namespace parcelset { namespace detail
-{
+namespace hpx { namespace parcelset { namespace detail {
     /// \cond NOINTERNAL
     template <typename Action>
     void register_per_action_data_counter_types(
         per_action_data_counter_registry& registry)
     {
         registry.register_class(
-            hpx::actions::detail::get_action_name<Action>()
-        );
+            hpx::actions::detail::get_action_name<Action>());
     }
     /// \endcond
-}}}
-#endif
+}}}       // namespace hpx::parcelset::detail
+#endif    // HPX_HAVE_PARCELPORT_ACTION_COUNTERS
 
-#endif
+#endif    // HPX_HAVE_NETWORKING
 #endif

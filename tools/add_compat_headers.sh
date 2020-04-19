@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2019 The STE||AR-Group
+# Copyright (c) 2019-2020 The STE||AR-Group
 #
 # SPDX-License-Identifier: BSL-1.0
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -148,7 +148,7 @@ for full_file in "${files[@]}"; do
 
 # No indentation otherwise it appears in the cat
 cat >${full_file} <<EOL
-//  Copyright (c) 2019 Ste||ar Group
+//  Copyright (c) 2019-2020 Ste||ar Group
 //
 //  SPDX-License-Identifier: BSL-1.0
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
