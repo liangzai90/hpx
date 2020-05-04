@@ -227,28 +227,28 @@ namespace hpx { namespace debug {
         }
 
         template <typename... Args>
-        void display(const char* prefix, Args... args);
+        void display(const char* prefix, Args&&... args);
 
         template <typename... Args>
-        void debug(Args... args)
+        void debug(Args&&... args)
         {
             display("<DEB> ", std::forward<Args>(args)...);
         }
 
         template <typename... Args>
-        void warning(Args... args)
+        void warning(Args&&... args)
         {
             display("<WAR> ", std::forward<Args>(args)...);
         }
 
         template <typename... Args>
-        void error(Args... args)
+        void error(Args&&... args)
         {
             display("<ERR> ", std::forward<Args>(args)...);
         }
 
         template <typename... Args>
-        void timed(Args... args)
+        void timed(Args&&... args)
         {
             display("<TIM> ", std::forward<Args>(args)...);
         }
@@ -283,10 +283,11 @@ namespace hpx { namespace debug {
         double delay_;
         std::tuple<Args...> message_;
         //
-        timed_init(double delay, const Args&... args)
+        template <typename... Args_>
+        timed_init(double delay, Args_&&... args)
           : time_start_(std::chrono::steady_clock::now())
           , delay_(delay)
-          , message_(args...)
+          , message_(std::forward<Args_>(args)...)
         {
         }
 
@@ -340,22 +341,22 @@ namespace hpx { namespace debug {
         }
 
         template <typename... Args>
-        constexpr void debug(Args... args) const
+        constexpr void debug(Args&&... args) const
         {
         }
 
         template <typename... Args>
-        constexpr void warning(Args... args) const
+        constexpr void warning(Args&&... args) const
         {
         }
 
         template <typename... Args>
-        constexpr void error(Args... args) const
+        constexpr void error(Args&&... args) const
         {
         }
 
         template <typename... Args>
-        constexpr void timed(Args... args) const
+        constexpr void timed(Args&&... args) const
         {
         }
 
@@ -379,7 +380,7 @@ namespace hpx { namespace debug {
 
         // @todo, return void so that timers have zero footprint when disabled
         template <typename... Args>
-        constexpr int make_timer(double delay, const Args... args) const
+        constexpr int make_timer(double delay, Args&&... args) const
         {
             return 0;
         }
@@ -425,22 +426,22 @@ namespace hpx { namespace debug {
         }
 
         template <typename... Args>
-        constexpr void debug(Args... args)
+        constexpr void debug(Args&&... args)
         {
             detail::debug(prefix_, std::forward<Args>(args)...);
         }
         template <typename... Args>
-        constexpr void warning(Args... args)
+        constexpr void warning(Args&&... args)
         {
             detail::warning(prefix_, std::forward<Args>(args)...);
         }
         template <typename... Args>
-        constexpr void error(Args... args)
+        constexpr void error(Args&&... args)
         {
             detail::error(prefix_, std::forward<Args>(args)...);
         }
         template <typename... T, typename... Args>
-        void timed(timed_init<T...>& init, Args... args)
+        void timed(timed_init<T...>& init, Args&&... args)
         {
             auto now = std::chrono::steady_clock::now();
             if (init.elapsed(now))
@@ -488,9 +489,11 @@ namespace hpx { namespace debug {
         }
 
         template <typename... Args>
-        timed_init<Args...> make_timer(double delay, const Args... args)
+        timed_init<typename std::decay<Args>::type...> make_timer(
+            double delay, Args&&... args)
         {
-            return timed_init<Args...>(delay, args...);
+            return timed_init<typename std::decay<Args>::type...>(
+                delay, std::forward<Args>(args)...);
         }
     };
 #endif

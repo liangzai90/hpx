@@ -38,11 +38,11 @@ namespace hpx { namespace mpi { namespace experimental {
         // mutex needed to protect mpi request list, note that the
         // mpi poll function takes place inside the main scheduling loop
         // of hpx and not on an hpx worker thread, so we must use std:mutex
-        std::mutex& get_list_mtx()
-        {
-            static std::mutex list_mtx;
-            return list_mtx;
-        }
+//         std::mutex& get_list_mtx()
+//         {
+//             static std::mutex list_mtx;
+//             return list_mtx;
+//         }
 
         // an MPI error handling type that we can use to intercept
         // MPI errors is we enable the error handler
@@ -73,19 +73,19 @@ namespace hpx { namespace mpi { namespace experimental {
 
         std::vector<MPI_Request>& get_active_requests()
         {
-            static std::vector<MPI_Request> active_requests;
+            static thread_local std::vector<MPI_Request> active_requests;
             return active_requests;
         }
 
         std::vector<future_data_ptr>& get_active_futures()
         {
-            static std::vector<future_data_ptr> active_futures;
+            static thread_local std::vector<future_data_ptr> active_futures;
             return active_futures;
         }
 
         queue_type& get_request_queue()
         {
-            static queue_type request_queue;
+            static thread_local queue_type request_queue;
             return request_queue;
         }
 
@@ -165,23 +165,23 @@ namespace hpx { namespace mpi { namespace experimental {
     // ready when found
     void poll()
     {
-        std::unique_lock<std::mutex> lk(
-            detail::get_list_mtx(), std::try_to_lock);
-        if (!lk.owns_lock())
-        {
-            if (mpi_debug.is_enabled())
-            {
-                // for debugging
-                static auto poll_deb = mpi_debug.make_timer(1,
-                    debug::str<>("Poll - lock failed"), detail::get_mpi_info());
-
-                mpi_debug.timed(poll_deb, "requests",
-                    debug::dec<>(detail::get_active_requests().size()),
-                    "futures",
-                    debug::dec<>(detail::get_active_futures().size()));
-            }
-            return;
-        }
+//         std::unique_lock<std::mutex> lk(
+//             detail::get_list_mtx(), std::try_to_lock);
+//         if (!lk.owns_lock())
+//         {
+//             if (mpi_debug.is_enabled())
+//             {
+//                 // for debugging
+//                 static auto poll_deb = mpi_debug.make_timer(1,
+//                     debug::str<>("Poll - lock failed"), detail::get_mpi_info());
+//
+//                 mpi_debug.timed(poll_deb, "requests",
+//                     debug::dec<>(detail::get_active_requests().size()),
+//                     "futures",
+//                     debug::dec<>(detail::get_active_futures().size()));
+//             }
+//             return;
+//         }
 
         if (mpi_debug.is_enabled())
         {
@@ -351,41 +351,53 @@ namespace hpx { namespace mpi { namespace experimental {
         bool init_mpi, std::string const& pool_name, bool init_errorhandler)
     {
         // Check if MPI_Init has been called previously
-        int is_initialized = 0;
-        MPI_Initialized(&is_initialized);
-        if (is_initialized)
+        auto& mpi_info = detail::get_mpi_info();
+        if (!mpi_info.mpi_initialized_.exchange(true))
         {
-            MPI_Comm_rank(MPI_COMM_WORLD, &detail::get_mpi_info().rank_);
-            MPI_Comm_size(MPI_COMM_WORLD, &detail::get_mpi_info().size_);
-        }
-        else if (init_mpi)
-        {
-            int provided;
-            int required = MPI_THREAD_MULTIPLE;
-            MPI_Init_thread(nullptr, nullptr, required, &provided);
-            if (provided < MPI_THREAD_FUNNELED)
+            int is_initialized = 0;
+            MPI_Initialized(&is_initialized);
+            if (is_initialized)
+            {
+                MPI_Comm_rank(MPI_COMM_WORLD, &mpi_info.rank_);
+                MPI_Comm_size(MPI_COMM_WORLD, &mpi_info.size_);
+            }
+            else if (init_mpi)
+            {
+                int provided;
+                int required = MPI_THREAD_MULTIPLE;
+                MPI_Init_thread(nullptr, nullptr, required, &provided);
+                if (provided < MPI_THREAD_FUNNELED)
+                {
+                    mpi_debug.error(
+                        debug::str<>("hpx::mpi::experimental::init"),
+                        "init failed");
+                    HPX_THROW_EXCEPTION(invalid_status,
+                        "hpx::mpi::experimental::init",
+                        "the MPI installation doesn't allow multiple threads");
+                }
+                MPI_Comm_rank(MPI_COMM_WORLD, &mpi_info.rank_);
+                MPI_Comm_size(MPI_COMM_WORLD, &mpi_info.size_);
+            }
+            else
             {
                 mpi_debug.error(debug::str<>("hpx::mpi::experimental::init"),
-                    "init failed");
+                    "MPI was not initialized yet");
                 HPX_THROW_EXCEPTION(invalid_status,
                     "hpx::mpi::experimental::init",
-                    "the MPI installation doesn't allow multiple threads");
+                    "MPI was not initialized yet");
             }
-            MPI_Comm_rank(MPI_COMM_WORLD, &detail::get_mpi_info().rank_);
-            MPI_Comm_size(MPI_COMM_WORLD, &detail::get_mpi_info().size_);
-            detail::get_mpi_info().mpi_initialized_ = true;
         }
 
         if (mpi_debug.is_enabled())
         {
-            mpi_debug.debug(debug::str<>("hpx::mpi::experimental::init"),
-                detail::get_mpi_info());
+            mpi_debug.debug(
+                debug::str<>("hpx::mpi::experimental::init"), mpi_info);
         }
 
-        if (init_errorhandler)
+        if (init_errorhandler &&
+            !mpi_info.error_handler_initialized_.exchange(true))
         {
             set_error_handler();
-            detail::get_mpi_info().error_handler_initialized_ = true;
         }
 
         // install polling loop on requested thread pool
@@ -412,15 +424,15 @@ namespace hpx { namespace mpi { namespace experimental {
 
     void finalize(std::string const& pool_name)
     {
-        if (detail::get_mpi_info().error_handler_initialized_)
+        auto& mpi_info = detail::get_mpi_info();
+        if (mpi_info.error_handler_initialized_.exchange(false))
         {
             HPX_ASSERT(detail::hpx_mpi_errhandler != 0);
-            detail::get_mpi_info().error_handler_initialized_ = false;
             MPI_Errhandler_free(&detail::hpx_mpi_errhandler);
             detail::hpx_mpi_errhandler = 0;
         }
 
-        if (detail::get_mpi_info().mpi_initialized_)
+        if (mpi_info.mpi_initialized_.exchange(false))
         {
             MPI_Finalize();
         }

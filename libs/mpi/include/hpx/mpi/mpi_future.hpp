@@ -16,6 +16,7 @@
 #include <hpx/runtime/thread_pool_helpers.hpp>
 #include <hpx/threading_base.hpp>
 
+#include <atomic>
 #include <cstddef>
 #include <iosfwd>
 #include <mutex>
@@ -36,7 +37,7 @@ namespace hpx { namespace mpi { namespace experimental {
         // mutex needed to protect mpi request list, note that the
         // mpi poll function takes place inside the main scheduling loop
         // of hpx and not on an hpx worker thread, so we must use std:mutex
-        HPX_EXPORT std::mutex& get_list_mtx();
+        //         HPX_EXPORT std::mutex& get_list_mtx();
 
         // -----------------------------------------------------------------
         // An implementation of future_data for MPI
@@ -76,10 +77,18 @@ namespace hpx { namespace mpi { namespace experimental {
         // used extensivey with debug::print to display rank etc
         struct mpi_info
         {
-            bool mpi_initialized_ = false;
-            bool error_handler_initialized_ = false;
-            int rank_ = -1;
-            int size_ = -1;
+            mpi_info()
+              : mpi_initialized_(false)
+              , error_handler_initialized_(false)
+              , rank_(-1)
+              , size_(-1)
+            {
+            }
+
+            std::atomic<bool> mpi_initialized_;
+            std::atomic<bool> error_handler_initialized_;
+            int rank_;
+            int size_;
         };
 
         // an instance of mpi_info that we store data in
@@ -172,7 +181,7 @@ namespace hpx { namespace mpi { namespace experimental {
     inline void wait()
     {
         hpx::util::yield_while([]() {
-            std::lock_guard<std::mutex> lk(detail::get_list_mtx());
+//             std::lock_guard<std::mutex> lk(detail::get_list_mtx());
             return (detail::get_active_futures().size() > 0);
         });
     }
@@ -181,7 +190,7 @@ namespace hpx { namespace mpi { namespace experimental {
     inline void wait(F&& f)
     {
         hpx::util::yield_while([&]() {
-            std::lock_guard<std::mutex> lk(detail::get_list_mtx());
+//             std::lock_guard<std::mutex> lk(detail::get_list_mtx());
             return (detail::get_active_futures().size() > 0) || f();
         });
     }
