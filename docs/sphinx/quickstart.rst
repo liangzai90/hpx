@@ -41,7 +41,7 @@ It is also recommended that you check out the latest stable tag:
 The minimum dependencies needed to use |hpx| are |boost|_ and |hwloc|_. If these
 are not available through your system package manager, see
 :ref:`boost_installation` and :ref:`hwloc_installation` for instructions on how
-to build them yourself. In addition to |boost| and HWLOC, it is recommended
+to build them yourself. In addition to |boost| and |hwloc|, it is recommended
 that you don't use the system allocator, but instead use either ``tcmalloc``
 from |google_perftools|_ (default) or |jemalloc|_ for better performance. If you
 would like to try |hpx| without a custom allocator at this point, you can
@@ -146,7 +146,7 @@ the distributed aspects of |hpx|.
       ... examples.quickstart.hello_world_distributed
       ... hello_world_distributed
 
-   It is also possible to build all quickstart examples using ``make
+   It is also possible to build, for instance, all quickstart examples using ``make
    examples.quickstart``.
 
 Hello, World!
@@ -173,7 +173,7 @@ build an executable using CMake and |hpx|:
 .. note::
 
    ``COMPONENT_DEPENDENCIES iostreams`` is optional for a minimal project but
-   lets users use the |hpx| equivalent of ``std::cout``, i.e., the |hpx|
+   lets us use the |hpx| equivalent of ``std::cout``, i.e., the |hpx|
    :ref:`iostreams` functionality in our application.
 
 Create a new project directory and a ``CMakeLists.txt`` with the contents above.
