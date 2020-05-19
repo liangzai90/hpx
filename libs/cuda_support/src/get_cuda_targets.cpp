@@ -6,8 +6,6 @@
 
 #include <hpx/config.hpp>
 
-#if defined(HPX_HAVE_CUDA)
-
 #include <hpx/async.hpp>
 #include <hpx/errors.hpp>
 #include <hpx/lcos/future.hpp>
@@ -66,6 +64,4 @@ namespace hpx { namespace cuda {
         return hpx::async(cuda_get_targets_action(), locality);
     }
 }}    // namespace hpx::cuda
-#endif
-
 #endif
