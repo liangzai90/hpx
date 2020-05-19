@@ -6,6 +6,7 @@
 
 set(tests
     basic_receiver
+    basic_operation_state
     execution_context
 )
 
