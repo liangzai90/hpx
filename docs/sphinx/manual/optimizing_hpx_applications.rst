@@ -15,7 +15,7 @@ Optimizing |hpx| applications
 Performance counters
 ====================
 
-Performance Counters in |hpx| are used to provide information as to how well the
+Performance counters in |hpx| are used to provide information as to how well the
 runtime system or an application is performing. The counter data can help
 determine system bottlenecks, and fine-tune system and application performance.
 The |hpx| runtime system, its networking, and other layers provide counter data
@@ -29,9 +29,9 @@ transfer without competing for network bandwidth with other network traffic. The
 application could use the counter data to adjust its transfer rate as the
 bandwidth usage from other network traffic increases or decreases.
 
-Performance Counters are |hpx| parallel processes that expose a predefined
+Performance counters are |hpx| parallel processes that expose a predefined
 interface. |hpx| exposes special API functions that allow one to create, manage,
-and read the counter data, and release instances of Performance Counters.
+and read the counter data, and release instances of performance counters.
 Performance Counter instances are accessed by name, and these names have a
 predefined structure which is described in the section
 :ref:`performance_counter_names`. The advantage of this is that any Performance
@@ -84,8 +84,12 @@ index is not specified, |hpx| will assume a default of ``-1``.
 
 .. _example:
 
-Two simple examples
+Two counter name examples
 -------------------
+
+This section gives examples of both simple counter names and aggregate
+counter names. For more information on simple and aggregate counter
+names, please see :ref:`performance_counter_instances`. 
 
 An example of a well-formed (and meaningful) simple counter name would be:
 
@@ -549,8 +553,7 @@ functions of the created client component instance should be called::
         "/threads{locality#0/total}/count/cumulative");
     hpx::cout << count.get_value<int>().get() << hpx::endl;
 
-For more information about the client component type, see [classref
-hpx::performance_counters::performance_counter].
+For more information about the client component type, see |:cpp:class:`hpx::performance_counters::performance_counter` 
 
 .. note::
 
@@ -670,8 +673,7 @@ initialize the runtime system::
         return hpx::init(argc, argv);
     }
 
-Please see the code in [hpx_link
-examples/performance_counters/simplest_performance_counter.cpp..simplest_performance_counter.cpp]
+Please see the code in :download:`simplest_performance_counter.cpp <../../examples/performance_counters/simplest_performance_counter.cpp>`
 for a full example demonstrating this functionality.
 
 .. _full_counters:
@@ -717,9 +719,8 @@ this looks like:
    :language: c++
 
 i.e., the type ``sine_counter`` is derived from the base class passing the type
-as a template argument (please see [hpx_link
-examples/performance_counters/sine/server/sine.hpp..sine.hpp] for the full
-source code of the counter definition). For more information about this
+as a template argument (please see :download:`simplest_performance_counter.cpp <../../examples/performance_counters/simplest_performance_counter.cpp>`
+for the full source code of the counter definition). For more information about this
 technique (called Curiously Recurring Template Pattern - CRTP), please see for
 instance the corresponding `Wikipedia article
 <http://en.wikipedia.org/wiki/Curiously_recurring_template_pattern>`_. This base
