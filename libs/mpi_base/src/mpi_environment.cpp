@@ -193,7 +193,12 @@ namespace hpx { namespace util {
         }
         else
         {
+#if defined(HPX_HAVE_NETWORKING)
             rtcfg.mode_ = hpx::runtime_mode_worker;
+#else
+            // when networking is off, all ranks are equivalent
+            rtcfg.mode_ = hpx::runtime_mode_console;
+#endif
         }
 
         rtcfg.add_entry("hpx.parcel.mpi.rank", std::to_string(this_rank));
