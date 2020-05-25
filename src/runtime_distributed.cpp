@@ -15,12 +15,12 @@
 #include <hpx/collectives/detail/barrier_node.hpp>
 #include <hpx/collectives/latch.hpp>
 #include <hpx/command_line_handling/command_line_handling.hpp>
-#include <hpx/concurrency/thread_name.hpp>
 #include <hpx/coroutines/coroutine.hpp>
 #include <hpx/custom_exception_info.hpp>
 #include <hpx/datastructures/tuple.hpp>
 #include <hpx/errors.hpp>
 #include <hpx/functional.hpp>
+#include <hpx/itt_notify/thread_name.hpp>
 #include <hpx/logging.hpp>
 #include <hpx/performance_counters/counter_creators.hpp>
 #include <hpx/performance_counters/counters.hpp>

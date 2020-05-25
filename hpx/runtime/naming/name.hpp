@@ -12,8 +12,9 @@
 #include <hpx/allocator_support/internal_allocator.hpp>
 #include <hpx/assertion.hpp>
 #include <hpx/basic_execution/register_locks.hpp>
-#include <hpx/concurrency/itt_notify.hpp>
+#include <hpx/basic_execution/this_thread.hpp>
 #include <hpx/concurrency/spinlock_pool.hpp>
+#include <hpx/itt_notify/itt_notify.hpp>
 #include <hpx/runtime/naming/id_type.hpp>
 #include <hpx/runtime/naming_fwd.hpp>
 #include <hpx/serialization/serialization_fwd.hpp>
@@ -21,7 +22,6 @@
 #include <hpx/thread_support/atomic_count.hpp>
 #include <hpx/traits/get_remote_result.hpp>
 #include <hpx/traits/promise_local_result.hpp>
-#include <hpx/basic_execution/this_thread.hpp>
 
 #include <cstddef>
 #include <cstdint>
